@@ -1,0 +1,69 @@
+<h1>新規店舗登録</h1>
+
+<%= form_with model:@restaurant, local: true do |f| %>
+  <div>
+    <%= f.label :images, "イメージ写真(複数可)"%><br>
+    <%= f.file_field :images, multiple: true %>
+  </div><br>
+
+  <div>
+    <%= f.label :name, "店名"%><br>
+    <%= f.text_field :name %>
+  </div><br>
+
+  <div>
+    <%= f.label :address, "住所"%><br>
+    <%= f.text_field :address %>
+  </div><br>
+
+  <div>
+    <%= f.label :access, "アクセス"%><br>
+    <%= f.text_field :access %>
+  </div><br>
+
+  <div>
+    <%= f.label :phone_num, "電話番号"%><br>
+    <%= f.text_field :phone_num %>
+  </div><br>
+
+  <div>
+    <%= f.label :description, "紹介文"%><br>
+    <%= f.text_field :description %>
+  </div><br>
+
+  <div>
+    <%= f.label :opening_hours, "営業時間"%><br>
+    <%= f.text_field :opening_hours %>
+  </div><br>
+
+  <div>
+    <%= f.label :website, "公式サイトURL"%><br>
+    <%= f.text_field :website %>
+  </div><br>
+
+  <div>
+    <%= f.label :payment, "支払い方法"%><br>
+    <%= f.text_field :payment %>
+  </div><br>
+
+
+  <div>
+    <%= f.label :country_ids, "提供料理の国名(複数選択可)"%><br>
+    <%= f.collection_check_boxes :country_ids, @countries, :id, :name %>
+  </div><br>
+
+  <div>
+    <%= f.label :genre_ids, "提供料理のジャンル(複数選択可)"%><br>
+    <%= f.collection_check_boxes :genre_ids, @genres, :id, :name %>
+  </div><br>
+
+  <div>
+    <%= f.label :situation_ids, "利用シーン・雰囲気等(複数選択可)"%><br>
+    <%= f.collection_check_boxes :situation_ids, @situations, :id, :name %>
+  </div><br>
+
+  <div>
+    <%= f.submit "登録する" %>
+  </div>
+
+<% end %>
