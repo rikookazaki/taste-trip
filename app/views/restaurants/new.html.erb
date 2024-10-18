@@ -2,6 +2,11 @@
 
 <%= form_with model:@restaurant, local: true do |f| %>
   <div>
+    <%= f.label :images, "イメージ写真(複数可)"%><br>
+    <%= f.file_field :images, multiple: true %>
+  </div><br>
+
+  <div>
     <%= f.label :name, "店名"%><br>
     <%= f.text_field :name %>
   </div><br>
