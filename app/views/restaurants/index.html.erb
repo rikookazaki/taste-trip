@@ -4,7 +4,7 @@
 
 
 <% @restaurants.each do |restaurant| %>
-  <%= restaurant.name %><br>
+  <%= link_to restaurant.name, restaurant_path(restaurant.id) %><br>
   <% restaurant.images.each do |image| %>
     <%= image_tag image.variant(resize: '200x200') %>
   <% end %><br><br>
