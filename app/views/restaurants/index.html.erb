@@ -2,10 +2,20 @@
 
 <%= link_to "新規店舗登録", new_restaurant_path %><br><br><br>
 
+<%= search_form_for @q do |f| %>
+  <div class="field">
+    <%= f.label :countries_name_or_countries_region_cont, "国名で検索" %>
+    <%= f.search_field :countries_name_or_countries_region_cont %>
+  </div>
+  <div class="actions">
+    <%= f.submit "検索" %>
+  </div>
+<% end %>
 
-<% @restaurants.each do |restaurant| %>
-  <%= link_to restaurant.name, restaurant_path(restaurant.id) %><br>
-  <% restaurant.images.each do |image| %>
-    <%= image_tag image.variant(resize: '200x200') %>
-  <% end %><br><br>
+<% if params[:q].present? %>
+  <ul>
+    <% @restaurants.each do |restaurant| %>
+      <li><%= restaurant.name %></li>
+    <% end %>
+  </ul>
 <% end %>
