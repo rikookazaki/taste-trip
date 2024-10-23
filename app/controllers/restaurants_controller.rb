@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @q = Restaurant.ransack(params[:q])
-    @restaurants = @q.result.includes(:countries)
+    @restaurants = @q.result.includes(:countries, :genres, :situations)
   end
 
   def new

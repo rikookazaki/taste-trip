@@ -3,19 +3,41 @@
 <%= link_to "新規店舗登録", new_restaurant_path %><br><br><br>
 
 <%= search_form_for @q do |f| %>
+  <!-- 国・地域の絞り込み -->
   <div class="field">
-    <%= f.label :countries_name_or_countries_region_cont, "国名で検索" %>
+    <%= f.label :countries_name_or_countries_region_cont, "国名または地域名で検索" %><br>
     <%= f.search_field :countries_name_or_countries_region_cont %>
-  </div>
+  </div><br>
+
+  <!-- ジャンルの絞り込み -->
+  <div class="field">
+    <%= f.label :genres_id_in, "ジャンルで検索" %><br>
+    <%= f.collection_check_boxes :genres_id_in, Genre.all, :id, :name %>
+  </div><br>
+
+  <!-- 利用シーンの絞り込み -->
+  <div class="field">
+    <%= f.label :situations_id_in, "利用シーンで検索" %><br>
+    <%= f.collection_check_boxes :situations_id_in, Situation.all, :id, :name %>
+  </div><br>
+
   <div class="actions">
     <%= f.submit "検索" %>
   </div>
+
 <% end %>
 
 <% if params[:q].present? %>
   <ul>
     <% @restaurants.each do |restaurant| %>
-      <li><%= restaurant.name %></li>
+      <li><%= link_to restaurant.name, restaurant_path(restaurant.id) %><br>
+          <% restaurant.images.each do |image| %>
+            <%= image_tag image.variant(resize: '200x200') %>
+          <% end %><br>
+          住所：<%= restaurant.address%><br>
+          アクセス：<%= restaurant.access%><br>
+          電話番号：<%= restaurant.phone_num%><br>
+      </li><br><br>
     <% end %>
   </ul>
 <% end %>
