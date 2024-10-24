@@ -1,11 +1,57 @@
-<h1>トップページ</h1>
+<div class="link_to_new">
+  <%= link_to "新規店舗登録", new_restaurant_path %><br>
+</div>
 
-<%= link_to "新規店舗登録", new_restaurant_path %><br><br><br>
+<% unless params[:q].present? %>
+<div class="main">
+  <%= search_form_for @q do |f| %>
+    <!-- 国・地域の絞り込み -->
+    <div class="country_field">
+      <%= f.label :countries_name_or_countries_region_cont, "国名または地域名で検索", class: "label"%><br>
+      <%= f.search_field :countries_name_or_countries_region_cont, class: "search-field" %>
+    </div><br>
 
+    <!-- ジャンルの絞り込み -->
+    <div class="field">
+      <%= f.label :genres_id_in, "ジャンルで絞り込む", class: "label"%><br>
+      <%= f.collection_check_boxes :genres_id_in, Genre.all, :id, :name, class: "checkboxes" %>
+    </div><br>
 
-<% @restaurants.each do |restaurant| %>
-  <%= link_to restaurant.name, restaurant_path(restaurant.id) %><br>
-  <% restaurant.images.each do |image| %>
-    <%= image_tag image.variant(resize: '200x200') %>
-  <% end %><br><br>
+    <!-- 利用シーンの絞り込み -->
+    <div class="field">
+      <%= f.label :situations_id_in, "利用シーンで絞り込む", class: "label"%><br>
+      <%= f.collection_check_boxes :situations_id_in, Situation.all, :id, :name, class: "checkboxes" %>
+    </div><br>
+
+    <!-- 住所での絞り込み -->
+    <div class="field">
+      <%= f.label :address_cont, "住所で絞り込む", class: "label" %><br>
+      <%= f.search_field :address_cont %>
+    </div><br>
+
+    <div class="actions">
+      <%= f.submit "検索", class:"submit_btn"%>
+    </div>
+
+  <% end %>
+</div>
+<% end %>
+
+<% if params[:q].present? %>
+  <div class="result_search">
+    検索結果一覧
+    <ul>
+      <% @restaurants.each do |restaurant| %>
+        <li><%= link_to restaurant.name, restaurant_path(restaurant.id) %><br>
+            <% restaurant.images.each do |image| %>
+              <%= image_tag image.variant(resize: '200x200') %>
+            <% end %><br>
+            住所：<%= restaurant.address%><br>
+            アクセス：<%= restaurant.access%><br>
+            電話番号：<%= restaurant.phone_num%><br>
+        </li><br><br>
+      <% end %>
+    </ul>
+    <%= link_to "検索画面に戻る", restaurants_path%>
+  </div>
 <% end %>

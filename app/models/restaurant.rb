@@ -9,4 +9,13 @@ class Restaurant < ApplicationRecord
   has_many :situations, through: :restaurant_situations
 
   has_many_attached :images
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["access", "address", "created_at", "description", "id", "name", "opening_hours", "payment", "phone_num", "updated_at", "website"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["countries", "genres", "images_attachments", "images_blobs", "restaurant_countries", "restaurant_genres", "restaurant_situations", "situations"]
+  end
+
 end

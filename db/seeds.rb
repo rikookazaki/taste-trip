@@ -13,6 +13,7 @@ csv = CSV.parse(csv_text, headers: true)
 csv.each do |row|
   Country.create!(
     name: row['name'],
+    region: row['region'],
   )
 end
 

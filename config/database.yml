@@ -8,7 +8,7 @@ development:
   username: root
   password:
   host: localhost
-  database: taste-trip_development
+  database: taste_trip_development
 
 test:
   <<: *default
@@ -16,7 +16,7 @@ test:
   username: root
   password:
   host: localhost
-  database: taste-trip_test
+  database: taste_trip_test
 
 production:
   <<: *default
