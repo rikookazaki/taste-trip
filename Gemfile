@@ -79,3 +79,5 @@ group :production do
 end
 
 gem 'ransack'
+gem 'dotenv-rails'
+gem 'google_places'
