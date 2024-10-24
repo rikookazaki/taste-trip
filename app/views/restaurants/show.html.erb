@@ -1,51 +1,63 @@
-<h3><%= @restaurant.name %></h3><br><br>
+<div class="main">
 
-<% @restaurant.images.each do |image| %>
-    <%= image_tag image.variant(resize: '200x200') %>
-<% end %><br><br>
+  <div class="restaurant">
+  <h3><%= @restaurant.name %></h3><br><br>
 
-<div>
-  <%= @restaurant.description %>
-</div><br><br>
+  <% @restaurant.images.each do |image| %>
+      <%= image_tag image.variant(resize: '200x200') %>
+  <% end %><br><br>
 
-<div>
-  住所：<%= @restaurant.address %>
-</div><br>
+  <div class="description">
+    <%= @restaurant.description %>
+  </div><br><br>
 
-<div>
-  電話番号:<%= @restaurant.phone_num %>
-</div><br>
+  <div class="info">
+    <div>
+      住所：<%= @restaurant.address %>
+    </div><br>
 
-<div>
-  アクセス:<%= @restaurant.access %>
-</div><br>
+    <div>
+      電話番号:<%= @restaurant.phone_num %>
+    </div><br>
 
-<div>
-  営業時間:<%= @restaurant.opening_hours %>
-</div><br>
+    <div>
+      アクセス:<%= @restaurant.access %>
+    </div><br>
 
-<div>
-  公式サイト:<%= @restaurant.website %>
-</div><br>
+    <div>
+      営業時間:<%= @restaurant.opening_hours %>
+    </div><br>
 
-<div>
-  支払い方法:<%= @restaurant.payment %>
-</div><br><br><br>
+    <div>
+      公式サイト:<%= @restaurant.website %>
+    </div><br>
 
-<div>
-  <% @restaurant.countries.each do |country| %>
-    <%= country.name %>
-  <% end %>
-</div><br>
+    <div>
+      支払い方法:<%= @restaurant.payment %>
+    </div><br><br><br>
 
-<div>
-  <% @restaurant.genres.each do |genre| %>
-    <%= genre.name %>
-  <% end %>
-</div><br>
+    <div>
+      提供料理の国名：
+      <% @restaurant.countries.each do |country| %>
+        <span class="item"><%= country.name %></span>
+      <% end %>
+    </div><br>
 
-<div>
-  <% @restaurant.situations.each do |situation| %>
-    <%= situation.name %>
-  <% end %>
-</div><br>
+    <div>
+      ジャンル：
+      <% @restaurant.genres.each do |genre| %>
+        <span class="item"><%= genre.name %></span>
+      <% end %>
+    </div><br>
+
+    <div>
+      利用シーン：
+      <% @restaurant.situations.each do |situation| %>
+        <span class="item"><%= situation.name %></span>
+      <% end %>
+    </div><br>
+  </div>
+
+  <%= link_to "戻る", restaurants_path%>
+
+</div>

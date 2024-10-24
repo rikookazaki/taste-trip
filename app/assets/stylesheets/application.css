@@ -13,3 +13,119 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+
+/* トップページ */
+
+ body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff8e1; /* 明るい黄色 */
+  color: #333;
+}
+
+.link_to_new{
+  text-align: right;
+  padding: 20px 50px;
+}
+
+.main{
+  background-color: #fff3cd; /* 薄い黄色 */
+  padding: 20px;
+  border-radius: 10px;
+  margin: 30px 100px;
+}
+
+.country_field{
+  height: 100px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.search-field{
+  height: 50px;
+  width: 100%;
+}
+
+.field{
+  height: 100px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.actions {
+  text-align: center;
+}
+
+
+.submit_btn{
+  background-color: #ff5722; /* 鮮やかなオレンジ */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.result_search{
+  background-color: #fff3cd; /* 薄い黄色 */
+  padding: 20px;
+  border-radius: 10px;
+  margin: 30px 100px;
+}
+
+
+/* 新規店舗登録ページ */
+
+.heading{
+  text-align: center;
+}
+
+.form_new{
+  margin: 30px 150px;
+}
+
+.search_new{
+  width: 100%;
+  text-align: center;
+}
+
+.field_new{
+  height: 30px;
+  width: 60%;
+}
+
+
+/* 店舗詳細ページ */
+
+.restaurant{
+  width: 70%;
+  margin: 20px auto;
+}
+
+.description{
+  background-color: white;
+  border-radius: 5px;
+  height: 100px;
+  width: 90%;
+  margin: 10px auto;
+  padding: 15px;
+}
+
+.info{
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+.item{
+  background-color: wheat;
+  color: brown;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
