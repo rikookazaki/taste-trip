@@ -8,6 +8,7 @@
 
 require 'csv'
 
+# countriesテーブル初期値設定
 csv_text = File.read(Rails.root.join('db', 'seeds', 'countries.csv'))
 csv = CSV.parse(csv_text, headers: true)
 csv.each do |row|
@@ -17,6 +18,7 @@ csv.each do |row|
   )
 end
 
+# genresテーブル初期値設定
 csv_text = File.read(Rails.root.join('db', 'seeds', 'genres.csv'))
 csv = CSV.parse(csv_text, headers: true)
 csv.each do |row|
@@ -25,6 +27,7 @@ csv.each do |row|
   )
 end
 
+# situarionsテーブル初期値設定
 csv_text = File.read(Rails.root.join('db', 'seeds', 'situations.csv'))
 csv = CSV.parse(csv_text, headers: true)
 csv.each do |row|
@@ -32,3 +35,42 @@ csv.each do |row|
     name: row['name'],
   )
 end
+
+
+# restaurantsテーブルにGooglePlacesAPIで取得した情報を初期値として設定
+service = GooglePlacesService.new
+
+def save_restaurants(service, cuisine, country_name)
+  places = service.send("fetch_#{cuisine.downcase}_restaurants")
+  country = Country.find_by(name: country_name)
+
+  places.each do |place|
+    place_details = service.fetch_place_details(place.place_id)
+    
+    formatted_address = place_details.formatted_address || '不明'
+    international_phone_number = place_details.international_phone_number || '不明'
+    opening_hours = place_details.opening_hours&.dig('weekday_text')&.join(", ")
+
+    if formatted_address.present? && !Restaurant.exists?(name: place.name, address: formatted_address)
+      restaurant = Restaurant.create(
+        name: place.name,
+        address: formatted_address,
+        phone_num: international_phone_number,
+        website: place.website,
+        opening_hours: opening_hours
+      )
+      restaurant.countries << country if restaurant.persisted? && country.present?
+    end
+  end
+end
+
+save_restaurants(service, 'Italian', 'イタリア')
+save_restaurants(service, 'French', 'フランス')
+save_restaurants(service, 'Chinese', '中国')
+save_restaurants(service, 'Mexican', 'メキシコ')
+save_restaurants(service, 'Indian', 'インド')
+save_restaurants(service, 'Korean', '韓国')
+save_restaurants(service, 'Thai', 'タイ')
+save_restaurants(service, 'Spanish', 'スペイン')
+save_restaurants(service, 'Vietnamese', 'ベトナム')
+save_restaurants(service, 'Greek', 'ギリシャ')
