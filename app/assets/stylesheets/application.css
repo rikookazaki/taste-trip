@@ -15,11 +15,25 @@
  */
 
 
+/* ヘッダー */
+ header{
+  height: 80px;
+  width: 100vw;
+  background-color: #fff3cd;
+ }
 
+
+/* フッター */
+ footer{
+  height: 40px;
+  width: 100vw;
+  background-color: #fff3cd;
+ }
 
 /* トップページ */
 
  body {
+  width: 100vw;
   font-family: 'Poppins', sans-serif;
   background-color: #fff8e1; /* 明るい黄色 */
   color: #333;
