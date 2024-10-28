@@ -25,6 +25,13 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
   end
 
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+    @countries = Country.all 
+    @genres = Genre.all 
+    @situations = Situation.all 
+  end
+
 
   private
 
