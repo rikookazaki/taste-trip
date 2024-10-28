@@ -61,6 +61,10 @@
       住所：<%= restaurant.address %><br>
       アクセス：<%= restaurant.access %><br>
       電話番号：<%= restaurant.phone_num %><br>
+      提供料理の国名：
+      <% restaurant.countries.each do |country| %>
+        <span class="item"><%= country.name %></span>
+      <% end %>
     </li><br><br>
   <% end %>
 </ul>
