@@ -3,8 +3,17 @@
   <div class="restaurant">
   <h3><%= @restaurant.name %></h3><br><br>
 
-  <% @restaurant.images.each do |image| %>
+
+  <% if @restaurant.images.attached? %>
+    <!-- ActiveStorage画像を表示 -->
+    <% @restaurant.images.each do |image| %>
       <%= image_tag image.variant(resize: '200x200') %>
+    <% end %>
+  <% else %>
+    <!-- Google Places API画像を表示 -->
+    <% JSON.parse(@restaurant.api_image_urls || '[]').each do |url| %>
+      <%= image_tag url, size: '200x200' %>
+    <% end %>
   <% end %><br><br>
 
   <div class="description">
@@ -25,7 +34,10 @@
     </div><br>
 
     <div>
-      営業時間:<%= @restaurant.opening_hours %>
+      営業時間:
+      <% @restaurant.opening_hours.split(', ').each do |hour| %>
+        <div><%= hour %></div>
+      <% end %>
     </div><br>
 
     <div>
@@ -39,7 +51,7 @@
     <div>
       提供料理の国名：
       <% @restaurant.countries.each do |country| %>
-        <span class="item"><%= country.name %></span>
+        <span class="country_name"><%= country.name %></span>
       <% end %>
     </div><br>
 

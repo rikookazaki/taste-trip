@@ -1,4 +1,3 @@
-
 <div class="main">
   <h1 class="heading">新規店舗登録</h1>
 
@@ -48,23 +47,52 @@
       <%= f.text_field :payment, class:"field_new" %>
     </div><br>
 
+    <%# 国名を選択 %>
+    <div class="search_new2">
+      <%= f.label :country_ids, "提供料理の国名(複数選択可)", class: "label" %><br>
+      <% grouped_countries = @countries.group_by(&:region) %>
+      <% grouped_countries.each do |region, countries| %>
+        <div class="region_new"><%= region %></div> 
+        <div>
+          <% countries.each do |country| %>
+            <div class= "checkbox_new">
+              <%= check_box_tag "restaurant[country_ids][]", country.id, f.object.country_ids.include?(country.id) %>
+              <%= country.name %> 
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+        </div><br>
 
-    <div class="search_new">
-      <%= f.label :country_ids, "提供料理の国名(複数選択可)", class:"label"%><br>
-      <%= f.collection_check_boxes :country_ids, @countries, :id, :name %>
+    <%# ジャンルを選択 %>
+    <div class="search_new2">
+      <%= f.label :genre_ids, "提供料理のジャンル(複数選択可)", class: "label" %><br>
+      <% @genres.each do |genre| %>
+        <div class="checkbox_new" >
+          <%= check_box_tag "restaurant[genre_ids][]", genre.id, f.object.genre_ids.include?(genre.id), class: "genre-checkbox-input" %>
+          <%= label_tag "restaurant_genre_ids_#{genre.id}", genre.name, class: "genre-checkbox-label" %> <!-- ラベルのクラスも追加 -->
+        </div>
+      <% end %>
     </div><br>
 
-    <div class="search_new">
-      <%= f.label :genre_ids, "提供料理のジャンル(複数選択可)", class:"label"%><br>
-      <%= f.collection_check_boxes :genre_ids, @genres, :id, :name %>
-    </div><br>
-
-    <div class="search_new">
+    <%# 利用シーンなどを選択 %>
+    <div class="search_new2">
       <%= f.label :situation_ids, "利用シーン・雰囲気等(複数選択可)", class:"label"%><br>
-      <%= f.collection_check_boxes :situation_ids, @situations, :id, :name %>
+      <% grouped_situations = @situations.group_by(&:item) %>
+      <% grouped_situations.each do |item, situations| %>
+        <h4><%= item %></h4>
+        <div>
+          <% situations.each do |situation| %>
+            <div class= "checkbox_new">
+              <%= check_box_tag "restaurant[situation_ids][]", situation.id, f.object.situation_ids.include?(situation.id) %>
+              <%= situation.name %> 
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div><br>
 
-    <div class="actions">
+    <div class="action_new">
       <%= f.submit "登録する", class:"submit_btn" %>
     </div>
 

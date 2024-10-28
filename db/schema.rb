@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_18_091655) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_28_051655) do
   create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -85,17 +85,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_18_091655) do
     t.string "access"
     t.text "description"
     t.string "phone_num", null: false
-    t.string "opening_hours"
+    t.text "opening_hours"
     t.string "website"
     t.string "payment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "api_image_urls"
   end
 
   create_table "situations", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "item"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
