@@ -79,7 +79,7 @@ def format_phone_number(international_phone_number)
   return international_phone_number unless international_phone_number.start_with?('+81')
 
   # +81を取り除き、最初の0をつける
-  domestic_phone_number = international_phone_number.sub('+81', '0')
+  domestic_phone_number = international_phone_number.sub('+81 ', '0')
   return domestic_phone_number
 end
 

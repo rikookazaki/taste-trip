@@ -58,7 +58,7 @@
         <h4><%= region %></h4> <!-- 地域名を見出しとして表示 -->
         <div>
           <% countries.each do |country| %>
-            <div style="display: inline-block; margin-right: 10px;">
+            <div class= "checkbox_new">
               <%= check_box_tag "restaurant[country_ids][]", country.id, f.object.country_ids.include?(country.id) %>
               <%= country.name %> <!-- 国名を表示 -->
             </div>
@@ -68,13 +68,23 @@
         </div><br>
 
     <div class="search_new">
-      <%= f.label :genre_ids, "提供料理のジャンル(複数選択可)", class:"label"%><br>
-      <%= f.collection_check_boxes :genre_ids, @genres, :id, :name %>
+      <%= f.label :genre_ids, "提供料理のジャンル(複数選択可)", class: "label" %><br>
+      <% @genres.each do |genre| %>
+        <div class="checkbox_new" >
+          <%= check_box_tag "restaurant[genre_ids][]", genre.id, f.object.genre_ids.include?(genre.id), class: "genre-checkbox-input" %>
+          <%= label_tag "restaurant_genre_ids_#{genre.id}", genre.name, class: "genre-checkbox-label" %> <!-- ラベルのクラスも追加 -->
+        </div>
+      <% end %>
     </div><br>
 
     <div class="search_new">
       <%= f.label :situation_ids, "利用シーン・雰囲気等(複数選択可)", class:"label"%><br>
-      <%= f.collection_check_boxes :situation_ids, @situations, :id, :name %>
+      <% @situations.each do |situation| %>
+        <div class="checkbox_new" >
+          <%= check_box_tag "restaurant[situation_ids][]", situation.id, f.object.situation_ids.include?(situation.id), class: "situation-checkbox-input" %>
+          <%= label_tag "restaurant_situation_ids_#{situation.id}", situation.name, class: "situation-checkbox-label" %> <!-- ラベルのクラスも追加 -->
+        </div>
+      <% end %>
     </div><br>
 
     <div class="actions">
