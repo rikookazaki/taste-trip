@@ -41,17 +41,30 @@
   <div class="result_search">
     検索結果一覧
     <ul>
-      <% @restaurants.each do |restaurant| %>
-        <li><%= link_to restaurant.name, restaurant_path(restaurant.id) %><br>
-            <% restaurant.images.each do |image| %>
-              <%= image_tag image.variant(resize: '200x200') %>
-            <% end %><br>
-            住所：<%= restaurant.address%><br>
-            アクセス：<%= restaurant.access%><br>
-            電話番号：<%= restaurant.phone_num%><br>
-        </li><br><br>
+  <% @restaurants.each do |restaurant| %>
+    <li>
+      <%= link_to restaurant.name, restaurant_path(restaurant.id) %><br>
+
+      <% if restaurant.images.attached? %>
+        <!-- ActiveStorage画像を表示 -->
+        <% restaurant.images.each do |image| %>
+          <%= image_tag image.variant(resize: '200x200') %>
+        <% end %>
+      <% else %>
+        <!-- Google Places API画像を表示 -->
+        <% JSON.parse(restaurant.api_image_urls || '[]').each do |url| %>
+          <%= image_tag url, size: '200x200' %>
+        <% end %>
       <% end %>
-    </ul>
+
+      <br>
+      住所：<%= restaurant.address %><br>
+      アクセス：<%= restaurant.access %><br>
+      電話番号：<%= restaurant.phone_num %><br>
+    </li><br><br>
+  <% end %>
+</ul>
+
     <%= link_to "検索画面に戻る", restaurants_path%>
   </div>
 <% end %>
