@@ -30,6 +30,14 @@
   padding: 20px 50px;
 }
 
+.sinnkitouroku{
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 15px;
+  background-color: brown;
+}
+
 .main{
   background-color: #fff3cd; /* 薄い黄色 */
   padding: 20px;
@@ -41,6 +49,7 @@
   height: 100px;
   width: 60%;
   margin: 0 auto;
+  
 }
 
 .label {
@@ -53,13 +62,40 @@
 }
 
 .field{
-  height: 100px;
   width: 60%;
   margin: 0 auto;
+  padding: 15px 0;
+  border-top: solid 1px brown;
+}
+
+.checkbox_genres{
+  display: inline-block;
+}
+
+.item{
+  margin-top: 10px;
+}
+
+.checkbox_situations{
+  display: inline-block;
+  font-size: small;
+}
+
+.situation_item{
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.situation-checkbox-label{
+  font-size: small;
 }
 
 .actions {
   text-align: center;
+  width: 60%;
+  border-top: solid 1px brown;
+  margin: 0 auto;
+  padding-top: 15px;
 }
 
 
@@ -87,18 +123,30 @@
 }
 
 .form_new{
-  margin: 30px 150px;
+  margin: 30px auto;
+  width: 50%;
 }
 
 .search_new{
   width: 100%;
-  text-align: center;
   margin-bottom: 20px;
 }
 
 .field_new{
   height: 30px;
-  width: 60%;
+  width: 100%;
+}
+
+.search_new2{
+  border-radius: 10px;
+  background-color: lightyellow;
+  padding: 15px;
+}
+
+.region_new{
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 10px;
 }
 
 .checkbox_new{
@@ -106,6 +154,10 @@
   margin-right: 10px;
 }
 
+.action_new{
+  text-align: center;
+  padding-top: 15px;
+}
 
 /* 店舗詳細ページ */
 
@@ -129,7 +181,7 @@
 }
 
 
-.item{
+.country_name{
   background-color: wheat;
   color: brown;
   padding: 5px 10px;

@@ -1,5 +1,5 @@
 <div class="link_to_new">
-  <%= link_to "新規店舗登録", new_restaurant_path %><br>
+  <%= link_to "新規店舗登録", new_restaurant_path, class:"sinnkitouroku"%><br>
 </div>
 
 <% unless params[:q].present? %>
@@ -15,7 +15,7 @@
     <div class="field">
       <%= f.label :genres_id_in, "ジャンルで絞り込む", class: "label"%><br>
       <% Genre.all.each do |genre| %>
-        <div class="checkbox_new">
+        <div class="checkbox_genres">
           <%= check_box_tag "q[genre_ids_in][]", genre.id, params.dig(:q, :genre_ids_in)&.include?(genre.id.to_s), class: "genre-checkbox-input" %>
           <%= label_tag "restaurant_genre_ids_#{genre.id}", genre.name, class: "genre-checkbox-label" %>
         </div>
@@ -25,12 +25,20 @@
     <!-- 利用シーンの絞り込み -->
     <div class="field">
       <%= f.label :situations_id_in, "利用シーンで絞り込む", class: "label"%><br>
-      <% Situation.all.each do |situation| %>
-        <div class="checkbox_new">
-          <%= check_box_tag "q[situation_ids_in][]", situation.id, params.dig(:q, :situation_ids_in)&.include?(situation.id.to_s), class: "situation-checkbox-input" %>
-          <%= label_tag "restaurant_situation_ids_#{situation.id}", situation.name, class: "situation-checkbox-label" %>
-        </div>
-      <% end %>
+      <% grouped_situations = Situation.all.group_by(&:item) %>
+        <% grouped_situations.each do |item, situations| %>
+          <div class="item">
+            <div class="situation_item"><%= item %></div>
+            <div>
+              <% situations.each do |situation| %>
+                <div class="checkbox_situations">
+                  <%= check_box_tag "q[situation_ids_in][]", situation.id, params.dig(:q, :situation_ids_in)&.include?(situation.id.to_s), class: "situation-checkbox-input" %>
+                  <%= label_tag "restaurant_situation_ids_#{situation.id}", situation.name, class: "situation-checkbox-label" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
     </div><br><br>
 
     <!-- 住所での絞り込み -->
@@ -73,7 +81,7 @@
       電話番号：<%= restaurant.phone_num %><br>
       提供料理の国名：
       <% restaurant.countries.each do |country| %>
-        <span class="item"><%= country.name %></span>
+        <span class="country_name"><%= country.name %></span>
       <% end %>
     </li><br><br>
   <% end %>
