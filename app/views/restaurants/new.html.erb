@@ -48,11 +48,24 @@
       <%= f.text_field :payment, class:"field_new" %>
     </div><br>
 
-
     <div class="search_new">
-      <%= f.label :country_ids, "提供料理の国名(複数選択可)", class:"label"%><br>
-      <%= f.collection_check_boxes :country_ids, @countries, :id, :name %>
-    </div><br>
+      <%= f.label :country_ids, "提供料理の国名(複数選択可)", class: "label" %><br>
+  
+      <%# 地域ごとに国名をグループ化するためのハッシュを作成 %>
+      <% grouped_countries = @countries.group_by(&:region) %>
+  
+      <% grouped_countries.each do |region, countries| %>
+        <h4><%= region %></h4> <!-- 地域名を見出しとして表示 -->
+        <div>
+          <% countries.each do |country| %>
+            <div style="display: inline-block; margin-right: 10px;">
+              <%= check_box_tag "restaurant[country_ids][]", country.id, f.object.country_ids.include?(country.id) %>
+              <%= country.name %> <!-- 国名を表示 -->
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+        </div><br>
 
     <div class="search_new">
       <%= f.label :genre_ids, "提供料理のジャンル(複数選択可)", class:"label"%><br>
