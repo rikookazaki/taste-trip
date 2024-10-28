@@ -58,4 +58,12 @@ class GooglePlacesService
   def fetch_place_details(place_id)
     @client.spot(place_id)
   end
+
+  # 画像URLを取得するメソッド
+  def fetch_image_urls(place_details, max_images = 3)
+    # place_details.photos から指定枚数の画像URLを取得
+    place_details.photos.first(max_images).map do |photo|
+      photo.fetch_url(800) # 800ピクセル幅の画像URLを取得
+    end
+  end
 end
