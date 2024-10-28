@@ -51,6 +51,9 @@ def save_restaurants(service, cuisine, country_name)
     international_phone_number = place_details.international_phone_number || '不明'
     opening_hours = place_details.opening_hours&.dig('weekday_text')&.join(", ")
 
+    # 電話番号をフォーマット
+    formatted_phone_number = format_phone_number(international_phone_number)
+
     # 画像URLを最大3枚取得
     image_urls = service.fetch_image_urls(place_details)
 
@@ -58,7 +61,7 @@ def save_restaurants(service, cuisine, country_name)
       restaurant = Restaurant.new(
         name: place.name,
         address: formatted_address,
-        phone_num: international_phone_number,
+        phone_num: formatted_phone_number,
         website: place.website,
         opening_hours: opening_hours,
         api_image_urls: image_urls.to_json # JSON形式で保存
@@ -68,9 +71,26 @@ def save_restaurants(service, cuisine, country_name)
       restaurant.countries << country if country
       restaurant.save!
     end
-    
   end
+end
+
+# 電話番号のフォーマットを行うメソッド
+def format_phone_number(international_phone_number)
+  return international_phone_number unless international_phone_number.start_with?('+81')
+
+  # +81を取り除き、最初の0をつける
+  domestic_phone_number = international_phone_number.sub('+81', '0')
+  return domestic_phone_number
 end
 
 
 save_restaurants(service, 'Italian', 'イタリア')
+save_restaurants(service, 'French', 'フランス')
+save_restaurants(service, 'Chinese', '中国')
+save_restaurants(service, 'Mexican', 'メキシコ')
+save_restaurants(service, 'Indian', 'インド')
+save_restaurants(service, 'Korean', '韓国')
+save_restaurants(service, 'Thai', 'タイ')
+save_restaurants(service, 'Spanish', 'スペイン')
+save_restaurants(service, 'Vietnamese', 'ベトナム')
+save_restaurants(service, 'Greek', 'ギリシャ')
