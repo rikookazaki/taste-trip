@@ -34,7 +34,10 @@
     </div><br>
 
     <div>
-      営業時間:<%= @restaurant.opening_hours %>
+      営業時間:
+      <% @restaurant.opening_hours.split(', ').each do |hour| %>
+        <div><%= hour %></div>
+      <% end %>
     </div><br>
 
     <div>
