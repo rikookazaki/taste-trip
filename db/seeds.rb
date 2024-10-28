@@ -33,6 +33,7 @@ csv = CSV.parse(csv_text, headers: true)
 csv.each do |row|
   Situation.create!(
     name: row['name'],
+    item: row['item']
   )
 end
 
@@ -85,12 +86,3 @@ end
 
 
 save_restaurants(service, 'Italian', 'イタリア')
-save_restaurants(service, 'French', 'フランス')
-save_restaurants(service, 'Chinese', '中国')
-save_restaurants(service, 'Mexican', 'メキシコ')
-save_restaurants(service, 'Indian', 'インド')
-save_restaurants(service, 'Korean', '韓国')
-save_restaurants(service, 'Thai', 'タイ')
-save_restaurants(service, 'Spanish', 'スペイン')
-save_restaurants(service, 'Vietnamese', 'ベトナム')
-save_restaurants(service, 'Greek', 'ギリシャ')
