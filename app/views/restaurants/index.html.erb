@@ -14,20 +14,30 @@
     <!-- ジャンルの絞り込み -->
     <div class="field">
       <%= f.label :genres_id_in, "ジャンルで絞り込む", class: "label"%><br>
-      <%= f.collection_check_boxes :genres_id_in, Genre.all, :id, :name, class: "checkboxes" %>
+      <% Genre.all.each do |genre| %>
+        <div class="checkbox_new">
+          <%= check_box_tag "q[genre_ids_in][]", genre.id, params.dig(:q, :genre_ids_in)&.include?(genre.id.to_s), class: "genre-checkbox-input" %>
+          <%= label_tag "restaurant_genre_ids_#{genre.id}", genre.name, class: "genre-checkbox-label" %>
+        </div>
+      <% end %>
     </div><br>
 
     <!-- 利用シーンの絞り込み -->
     <div class="field">
       <%= f.label :situations_id_in, "利用シーンで絞り込む", class: "label"%><br>
-      <%= f.collection_check_boxes :situations_id_in, Situation.all, :id, :name, class: "checkboxes" %>
-    </div><br>
+      <% Situation.all.each do |situation| %>
+        <div class="checkbox_new">
+          <%= check_box_tag "q[situation_ids_in][]", situation.id, params.dig(:q, :situation_ids_in)&.include?(situation.id.to_s), class: "situation-checkbox-input" %>
+          <%= label_tag "restaurant_situation_ids_#{situation.id}", situation.name, class: "situation-checkbox-label" %>
+        </div>
+      <% end %>
+    </div><br><br>
 
     <!-- 住所での絞り込み -->
     <div class="field">
       <%= f.label :address_cont, "住所で絞り込む", class: "label" %><br>
       <%= f.search_field :address_cont %>
-    </div><br>
+    </div>
 
     <div class="actions">
       <%= f.submit "検索", class:"submit_btn"%>
