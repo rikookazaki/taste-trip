@@ -3,6 +3,31 @@ class RestaurantsController < ApplicationController
   def index
     @q = Restaurant.ransack(params[:q])
     @restaurants = @q.result.includes(:countries, :genres, :situations)
+
+    if params[:q].present?
+      # 国名によるフィルタリング
+      if params[:q][:countries_name_or_countries_region_cont].present?
+        @restaurants = @restaurants.joins(:countries)
+          .where(countries: { name: params[:q][:countries_name_or_countries_region_cont] })
+      end
+
+      # ジャンルによるフィルタリング
+      if params[:q][:genre_ids_in].present?
+        @restaurants = @restaurants.joins(:genres)
+          .where(genres: { id: params[:q][:genre_ids_in] })
+          .distinct  # 重複を排除
+      end
+
+      # 利用シーンによるフィルタリング
+      if params[:q][:situation_ids_in].present?
+        @restaurants = @restaurants.joins(:situations)
+          .where(situations: { id: params[:q][:situation_ids_in] })
+          .distinct  # 重複を排除
+      end
+    end
+
+    # 条件を満たす飲食店を表示
+    @restaurants = @restaurants.distinct
   end
 
   def new
