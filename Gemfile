@@ -81,3 +81,4 @@ end
 gem 'ransack'
 gem 'dotenv-rails'
 gem 'google_places'
+gem 'devise'
