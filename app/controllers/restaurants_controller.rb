@@ -25,6 +25,35 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
   end
 
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+    @countries = Country.all 
+    @genres = Genre.all 
+    @situations = Situation.all 
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:id])
+  
+    # 新しい画像がアップロードされていない場合、imagesパラメータを削除しない
+    if params[:restaurant][:images].blank?
+      params[:restaurant].delete(:images) # imagesを削除しても、既存の画像は保持される
+    end
+  
+    if @restaurant.update(restaurant_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+  
+  def destroy
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+    redirect_to root_path
+  end
+  
+  
 
   private
 
