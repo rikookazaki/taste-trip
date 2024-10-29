@@ -13,9 +13,14 @@
   <body>
     <header>
       <div class="link_to_new">
-        <div class="top_btn"><%= link_to "ユーザー登録", new_user_registration_path, class:"sinnkitouroku"%></div><br>
-        <div class="top_btn"><%= link_to "ログイン", new_user_session_path, class:"sinnkitouroku"%></div><br>
-        <div class="top_btn"><%= link_to "新規店舗登録", new_restaurant_path, class:"sinnkitouroku"%></div><br>
+        <% if user_signed_in? %>
+          <div class="top_btn"><%= link_to "マイページ", "#", class:"sinnkitouroku" %></div>
+          <div class="top_btn"><%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class:"sinnkitouroku" %></div>
+          <div class="top_btn"><%= link_to "新規店舗登録", new_restaurant_path, class:"sinnkitouroku"%></div>
+        <% else %>
+          <div class="top_btn"><%= link_to "ユーザー登録", new_user_registration_path, class:"sinnkitouroku"%></div>
+          <div class="top_btn"><%= link_to "ログイン", new_user_session_path, class:"sinnkitouroku"%></div>
+        <% end %>
       </div>
     </header>
     <%= yield %>
