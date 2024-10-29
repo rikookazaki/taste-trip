@@ -1,9 +1,14 @@
 <div class="main">
   <h1 class="heading">編集</h1>
 
-  <%= form_with model:@restaurant, local: true, class:"form_new" do |f| %>
+  <%= form_with(model:@restaurant, local: true, class:"form_new") do |f| %>
     <div class="search_new">
       <%= f.label :images, "イメージ写真(複数可)", class:"label"%><br>
+      <% @restaurant.images.each do |image| %>
+        <div>
+          <%= image_tag image.variant(resize: '200x200') %>
+        </div>
+      <% end %>
       <%= f.file_field :images, multiple: true %>
     </div><br>
 
