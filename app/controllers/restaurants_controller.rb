@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
   before_action :get_3tables, only: [:new, :edit]
+  before_action :authenticate_user!, except: [:show, :index]
 
   def index
     @q = Restaurant.ransack(params[:q])
@@ -71,7 +72,7 @@ class RestaurantsController < ApplicationController
   end
   
   
-  
+
   private
 
   def restaurant_params
