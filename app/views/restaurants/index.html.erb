@@ -2,55 +2,68 @@
 
 <% unless params[:q].present? %>
 <div class="main">
-  <%= search_form_for @q do |f| %>
+  <%= search_form_for @q, html: { id: "initial-search-form" } do |f| %>
     <!-- 国・地域の絞り込み -->
     <div class="country_field">
       <%= f.label :countries_name_or_countries_region_cont, "国名または地域名で検索", class: "label"%><br>
       <%= f.search_field :countries_name_or_countries_region_cont, class: "search-field" %>
     </div><br>
 
-    <!-- ジャンルの絞り込み -->
-    <div class="field">
-      <%= f.label :genres_id_in, "ジャンルで絞り込む", class: "label"%><br>
-      <% Genre.all.each do |genre| %>
-        <div class="checkbox_genres">
-          <%= check_box_tag "q[genre_ids_in][]", genre.id, params.dig(:q, :genre_ids_in)&.include?(genre.id.to_s), class: "genre-checkbox-input" %>
-          <%= label_tag "restaurant_genre_ids_#{genre.id}", genre.name, class: "genre-checkbox-label" %>
+    <!-- 検索ボタン -->
+    <div class="actions">
+      <%= button_tag "次へ", class:"submit_btn", id: "initial-submit-btn" %>
+    </div>
+  <% end %>
+
+    <!-- 追加の検索フィールド。初期状態では非表示 -->
+    <div id="advanced-search-fields" style="display: none;">
+      <%= search_form_for @q do |f| %>
+        <!-- hidden_fieldで国名の値を引き継ぐ -->
+        <%= f.hidden_field :countries_name_or_countries_region_cont, id: "hidden-country-field" %>
+
+        <!-- ジャンルの絞り込み -->
+        <div class="field">
+          <%= f.label :genres_id_in, "ジャンルで絞り込む", class: "label"%><br>
+          <% Genre.all.each do |genre| %>
+            <div class="checkbox_genres">
+              <%= check_box_tag "q[genre_ids_in][]", genre.id, params.dig(:q, :genre_ids_in)&.include?(genre.id.to_s), class: "genre-checkbox-input" %>
+              <%= label_tag "restaurant_genre_ids_#{genre.id}", genre.name, class: "genre-checkbox-label" %>
+            </div>
+          <% end %>
+        </div><br>
+
+        <!-- 利用シーンの絞り込み -->
+        <div class="field">
+          <%= f.label :situations_id_in, "利用シーンで絞り込む", class: "label"%><br>
+          <% grouped_situations = Situation.all.group_by(&:item) %>
+          <% grouped_situations.each do |item, situations| %>
+            <div class="item">
+              <div class="situation_item"><%= item %></div>
+              <div>
+                <% situations.each do |situation| %>
+                  <div class="checkbox_situations">
+                    <%= check_box_tag "q[situation_ids_in][]", situation.id, params.dig(:q, :situation_ids_in)&.include?(situation.id.to_s), class: "situation-checkbox-input" %>
+                    <%= label_tag "restaurant_situation_ids_#{situation.id}", situation.name, class: "situation-checkbox-label" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div><br><br>
+
+        <!-- 住所での絞り込み -->
+        <div class="field">
+          <%= f.label :address_cont, "住所で絞り込む", class: "label" %><br>
+          <%= f.search_field :address_cont %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "検索", class:"submit_btn"%>
         </div>
       <% end %>
-    </div><br>
-
-    <!-- 利用シーンの絞り込み -->
-    <div class="field">
-      <%= f.label :situations_id_in, "利用シーンで絞り込む", class: "label"%><br>
-      <% grouped_situations = Situation.all.group_by(&:item) %>
-        <% grouped_situations.each do |item, situations| %>
-          <div class="item">
-            <div class="situation_item"><%= item %></div>
-            <div>
-              <% situations.each do |situation| %>
-                <div class="checkbox_situations">
-                  <%= check_box_tag "q[situation_ids_in][]", situation.id, params.dig(:q, :situation_ids_in)&.include?(situation.id.to_s), class: "situation-checkbox-input" %>
-                  <%= label_tag "restaurant_situation_ids_#{situation.id}", situation.name, class: "situation-checkbox-label" %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-    </div><br><br>
-
-    <!-- 住所での絞り込み -->
-    <div class="field">
-      <%= f.label :address_cont, "住所で絞り込む", class: "label" %><br>
-      <%= f.search_field :address_cont %>
     </div>
-
-    <div class="actions">
-      <%= f.submit "検索", class:"submit_btn"%>
-    </div>
-
-  <% end %>
 </div>
+
 <% end %>
 
 <% if params[:q].present? %>
@@ -85,6 +98,6 @@
   <% end %>
 </ul>
 
-    <%= link_to "検索画面に戻る", restaurants_path%>
+    <%= link_to "検索画面に戻る" %>
   </div>
 <% end %>
