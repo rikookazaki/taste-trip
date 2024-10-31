@@ -51,21 +51,21 @@
     <div>
       提供料理の国名：
       <% @restaurant.countries.each do |country| %>
-        <span class="country_name"><%= country.name %></span>
+        <span class="features"><%= country.name %></span>
       <% end %>
     </div><br>
 
     <div>
       ジャンル：
       <% @restaurant.genres.each do |genre| %>
-        <span class="item"><%= genre.name %></span>
+        <span class="features"><%= genre.name %></span>
       <% end %>
     </div><br>
 
     <div>
       利用シーン：
       <% @restaurant.situations.each do |situation| %>
-        <span class="item"><%= situation.name %></span>
+        <span class="features"><%= situation.name %></span>
       <% end %>
     </div><br>
   </div>

@@ -71,7 +71,7 @@ header {
 }
 
 .main{
-  width: 70%;
+  width: 80%;
   height: 100%;
   background-color: #fff3cd; /* 薄い黄色 */
   padding: 20px;
@@ -223,7 +223,7 @@ header {
 }
 
 
-.country_name{
+.features{
   background-color: wheat;
   color: brown;
   padding: 5px 10px;

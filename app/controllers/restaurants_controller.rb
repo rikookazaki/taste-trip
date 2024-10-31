@@ -10,7 +10,11 @@ class RestaurantsController < ApplicationController
       # 国名によるフィルタリング
       if params[:q][:countries_name_or_countries_region_cont].present?
         @restaurants = @restaurants.joins(:countries)
-          .where(countries: { name: params[:q][:countries_name_or_countries_region_cont] })
+          .where(
+            "countries.name = :country_name OR countries.region = :region_name",
+            country_name: params[:q][:countries_name_or_countries_region_cont],
+            region_name: params[:q][:countries_name_or_countries_region_cont]
+          )
       end
       # ジャンルによるフィルタリング
       if params[:q][:genre_ids_in].present?
