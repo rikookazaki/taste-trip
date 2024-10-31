@@ -22,6 +22,24 @@
   background-color: #fff3cd;
  }
 
+.link_to_new{
+  padding: 20px 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sinnkitouroku{
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 15px;
+  background-color: brown;
+}
+
+.top_btn{
+  margin: 0 5px;
+}
+
 
 /* フッター */
  footer{
@@ -37,19 +55,6 @@
   font-family: 'Poppins', sans-serif;
   background-color: #fff8e1; /* 明るい黄色 */
   color: #333;
-}
-
-.link_to_new{
-  text-align: right;
-  padding: 20px 50px;
-}
-
-.sinnkitouroku{
-  text-decoration: none;
-  color: white;
-  border-radius: 10px;
-  padding: 10px 15px;
-  background-color: brown;
 }
 
 .main{

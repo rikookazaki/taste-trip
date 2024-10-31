@@ -70,8 +70,11 @@
     </div><br>
   </div>
 
-  <%= link_to "編集する", edit_restaurant_path(@restaurant.id)%><br>
-  <%= link_to "削除する", restaurant_path(@restaurant.id), data: { turbo_method: :delete } %><br>
+  <% if user_signed_in? %>
+    <%= link_to "編集する", edit_restaurant_path(@restaurant.id)%><br>
+    <%= link_to "削除する", restaurant_path(@restaurant.id), data: { turbo_method: :delete } %><br>
+  <% end %>
+  
   <%= link_to "戻る", restaurants_path%>
 
 </div>
