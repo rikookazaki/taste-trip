@@ -66,14 +66,14 @@ header {
 
 .content {
   width: 100vw;
-  background-color: #fff8e1; /* 明るい黄色 */
+  background-color: white; 
   padding: 40px 0 ;
 }
 
 .main{
   width: 80%;
   height: 100%;
-  background-color: #fff3cd; /* 薄い黄色 */
+  background-color: beige; 
   padding: 20px;
   border-radius: 10px;
   margin:  0 auto;
@@ -151,7 +151,6 @@ header {
 }
 
 .result_search{
-  background-color: #fff3cd; /* 薄い黄色 */
   padding: 20px;
   border-radius: 10px;
   margin: 30px 100px;
