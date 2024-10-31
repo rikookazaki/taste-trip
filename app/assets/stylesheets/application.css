@@ -14,29 +14,43 @@
  *= require_self
  */
 
+ * {
+  box-sizing: border-box; /* パディングやボーダーを含めた幅を計算 */
+}
 
 /* ヘッダー */
- header{
+header {
   height: 80px;
   width: 100vw;
   background-color: #fff3cd;
- }
-
-.link_to_new{
-  padding: 20px 50px;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px; 
 }
 
-.sinnkitouroku{
+
+.taste_trip{
+  font-size: 20px;
+  color: brown;
   text-decoration: none;
-  color: white;
-  border-radius: 10px;
-  padding: 10px 15px;
-  background-color: brown;
 }
 
-.top_btn{
+.top_btns {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.head_btn {
+  text-decoration: none;
+  color: brown;
+  border-radius: 20px;
+  padding: 10px 15px;
+  background-color: wheat;
+}
+
+.top_btn {
   margin: 0 5px;
 }
 
@@ -50,18 +64,19 @@
 
 /* トップページ */
 
- body {
+.content {
   width: 100vw;
-  font-family: 'Poppins', sans-serif;
   background-color: #fff8e1; /* 明るい黄色 */
-  color: #333;
+  padding: 40px 0 ;
 }
 
 .main{
+  width: 70%;
+  height: 100%;
   background-color: #fff3cd; /* 薄い黄色 */
   padding: 20px;
   border-radius: 10px;
-  margin: 30px 100px;
+  margin:  0 auto;
 }
 
 .country_field{
@@ -71,8 +86,16 @@
   
 }
 
+.label_top{
+  margin-bottom: 15px;
+}
+
 .label {
   font-weight: bold;
+  padding: 10px;
+  background-color: wheat;
+  color: brown;
+  border-radius: 20px;
 }
 
 .search-field{
@@ -84,7 +107,6 @@
   width: 60%;
   margin: 0 auto;
   padding: 15px 0;
-  border-top: solid 1px brown;
 }
 
 .checkbox_genres{
@@ -112,18 +134,19 @@
 .actions {
   text-align: center;
   width: 60%;
-  border-top: solid 1px brown;
   margin: 0 auto;
   padding-top: 15px;
 }
 
 
 .submit_btn{
-  background-color: #ff5722; /* 鮮やかなオレンジ */
-  color: white;
+  background-color: wheat;
+  color: brown;
+  font-size: 15px;
+  font-weight: bold;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
 }
 
