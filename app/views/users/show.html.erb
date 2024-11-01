@@ -1,1 +1,10 @@
 <p><%= @nickname %> さんのマイページ</p>
+
+<p><%= current_user.nickname %>さんのお気に入り</p>
+
+<ul>
+  <% @favorites.each do |restaurant| %>
+    <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+  <% end %>
+</ul>
+
