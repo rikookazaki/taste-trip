@@ -1,10 +1,12 @@
-<p><%= @nickname %> さんのマイページ</p>
+<div class="main">
+<div class="result_search">
+  <div><%= current_user.nickname %>さんのお気に入り</div>
+    <ul>
+      <% @favorites.each do |restaurant| %>
+         <%= render partial: "restaurants/restaurants", locals: { restaurant: restaurant } %>
+      <% end %>
+    </ul>
+  </div>
 
-<p><%= current_user.nickname %>さんのお気に入り</p>
-
-<ul>
-  <% @favorites.each do |restaurant| %>
-    <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
-  <% end %>
-</ul>
-
+  <%= link_to "戻る", root_path, class:"link_to_root"%>
+</div>

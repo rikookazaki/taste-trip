@@ -4,7 +4,7 @@
   <%= form_with model:@restaurant, local: true, class:"form_new" do |f| %>
     <div class="search_new">
       <%= f.label :images, "イメージ写真(複数可)", class:"label"%><br>
-      <%= f.file_field :images, multiple: true %>
+      <%= f.file_field :images, multiple: true, class:"field_new" %>
     </div><br>
 
     <div class="search_new">
@@ -67,12 +67,14 @@
     <%# ジャンルを選択 %>
     <div class="search_new2">
       <%= f.label :genre_ids, "提供料理のジャンル(複数選択可)", class: "label" %><br>
+      <div class="checkboxs">
       <% @genres.each do |genre| %>
         <div class="checkbox_new" >
           <%= check_box_tag "restaurant[genre_ids][]", genre.id, f.object.genre_ids.include?(genre.id), class: "genre-checkbox-input" %>
           <%= label_tag "restaurant_genre_ids_#{genre.id}", genre.name, class: "genre-checkbox-label" %> <!-- ラベルのクラスも追加 -->
         </div>
       <% end %>
+      </div>
     </div><br>
 
     <%# 利用シーンなどを選択 %>
@@ -98,6 +100,6 @@
 
   <% end %>
 
-  <%= link_to "戻る", restaurants_path%>
+  <%= link_to "戻る", restaurants_path, class:"link_to_root"%>
 
 </div>
