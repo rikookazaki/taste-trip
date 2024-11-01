@@ -1,7 +1,7 @@
 <div class="main">
 
   <div class="restaurant">
-  <h3><%= @restaurant.name %></h3><br><br>
+  <div class="restaurant_name"><%= @restaurant.name %></div><br><br>
 
 
   <% if @restaurant.images.attached? %>
@@ -15,6 +15,14 @@
       <%= image_tag url, size: '200x200' %>
     <% end %>
   <% end %><br><br>
+
+    <% if user_signed_in? %>
+      <% if current_user.restaurants.include?(@restaurant) %>
+        <%= button_to 'お気に入りから削除', restaurant_favorites_path(@restaurant), method: :delete, class: 'favorite-btn' %>
+      <% else %>
+        <%= button_to 'お気に入りに追加', restaurant_favorites_path(@restaurant), method: :post, class: 'favorite-btn' %>
+      <% end %>
+    <% end %>
 
   <div class="description">
     <%= @restaurant.description %>
@@ -68,13 +76,12 @@
         <span class="features"><%= situation.name %></span>
       <% end %>
     </div><br>
-  </div>
-
-  <% if user_signed_in? %>
-    <%= link_to "編集する", edit_restaurant_path(@restaurant.id)%><br>
-    <%= link_to "削除する", restaurant_path(@restaurant.id), data: { turbo_method: :delete } %><br>
-  <% end %>
+  </div><br><br>
   
-  <%= link_to "戻る", restaurants_path%>
+  <% if user_signed_in? %>
+    <%= link_to "編集する", edit_restaurant_path(@restaurant.id), class:"link_to_root"%>
+    <%= link_to "削除する", restaurant_path(@restaurant.id), data: { turbo_method: :delete }, class:"link_to_root" %>
+  <% end %>
+  <%= link_to "戻る", restaurants_path, class:"link_to_root" %>
 
 </div>

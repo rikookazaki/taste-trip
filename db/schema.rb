@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_29_085644) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_31_090930) do
   create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -44,6 +44,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_29_085644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "region"
+  end
+
+  create_table "favorites", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_favorites_on_restaurant_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", charset: "utf8mb3", force: :cascade do |t|
@@ -117,6 +126,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_29_085644) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favorites", "restaurants"
+  add_foreign_key "favorites", "users"
   add_foreign_key "restaurant_countries", "countries"
   add_foreign_key "restaurant_countries", "restaurants"
   add_foreign_key "restaurant_genres", "genres"

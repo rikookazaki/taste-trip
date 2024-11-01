@@ -27,6 +27,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 50px; 
+  
 }
 
 
@@ -34,6 +35,7 @@ header {
   font-size: 20px;
   color: brown;
   text-decoration: none;
+  font-family: "DynaPuff", system-ui;
 }
 
 .top_btns {
@@ -66,14 +68,14 @@ header {
 
 .content {
   width: 100vw;
-  background-color: #fff8e1; /* 明るい黄色 */
+  background-color: white; 
   padding: 40px 0 ;
 }
 
 .main{
   width: 80%;
   height: 100%;
-  background-color: #fff3cd; /* 薄い黄色 */
+  background-color: beige; 
   padding: 20px;
   border-radius: 10px;
   margin:  0 auto;
@@ -151,12 +153,36 @@ header {
 }
 
 .result_search{
-  background-color: #fff3cd; /* 薄い黄色 */
   padding: 20px;
   border-radius: 10px;
   margin: 30px 100px;
 }
 
+.result_search li{
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.restaurant_name_top{
+  margin-bottom: 15px;
+}
+
+.restaurant_name{
+  font-size: 20px;
+  font-weight: bold;
+  color: darkgreen;
+  text-decoration: none;
+}
+
+.info_index{
+  color: dimgray;
+  margin-bottom: 10px;
+}
+
+.info_item{
+  font-weight: bold;
+}
 
 /* 新規店舗登録ページ */
 
@@ -177,11 +203,11 @@ header {
 .field_new{
   height: 30px;
   width: 100%;
+  margin-top: 10px;
 }
 
 .search_new2{
   border-radius: 10px;
-  background-color: lightyellow;
   padding: 15px;
 }
 
@@ -196,9 +222,22 @@ header {
   margin-right: 10px;
 }
 
+.checkboxs{
+  margin-top: 10px;
+}
+
 .action_new{
   text-align: center;
   padding-top: 15px;
+}
+
+.link_to_root{
+  font-weight: bold;
+  padding: 10px 15px;
+  background-color: wheat;
+  color: brown;
+  border-radius: 20px;
+  text-decoration: none;
 }
 
 /* 店舗詳細ページ */
@@ -224,8 +263,18 @@ header {
 
 
 .features{
-  background-color: wheat;
-  color: brown;
+  background-color: darkgreen;
+  color: white;
   padding: 5px 10px;
+  border-radius: 15px;
+}
+
+button.favorite-btn {
+  padding: 5px 10px;
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: green;
+  border: none;
   border-radius: 15px;
 }

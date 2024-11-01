@@ -1,0 +1,25 @@
+<li>
+  <div class="restaurant_name_top"><%= link_to restaurant.name, restaurant_path(restaurant.id), class:"restaurant_name" %></div>
+
+  <% if restaurant.images.attached? %>
+    <!-- ActiveStorage画像を表示 -->
+    <% restaurant.images.each do |image| %>
+      <%= image_tag image.variant(resize: '200x200') %>
+    <% end %>
+  <% else %>
+    <!-- Google Places API画像を表示 -->
+    <% JSON.parse(restaurant.api_image_urls || '[]').each do |url| %>
+      <%= image_tag url, size: '200x200' %>
+    <% end %>
+  <% end %>
+
+  
+  <div class="info_index"><span class="info_item">住所：</span><%= restaurant.address %></div>
+  <div class="info_index"><span class="info_item">アクセス：</span><%= restaurant.access %></div>
+  <div class="info_index"><span class="info_item">電話番号：</span><%= restaurant.phone_num %></div>
+  <div class="info_index"><span class="info_item">提供料理の国名：</span>
+  <% restaurant.countries.each do |country| %>
+    <span class="features"><%= country.name %></span>
+  <% end %>
+  </div>
+</li>
