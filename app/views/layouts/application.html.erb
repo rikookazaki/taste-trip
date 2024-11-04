@@ -10,13 +10,15 @@
     <%= javascript_importmap_tags %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Itim&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DynaPuff:wght@400..700&family=Itim&family=Kosugi+Maru&display=swap" rel="stylesheet">
+
+
 
   </head>
 
   <body>
     <header>
-      <%= link_to "app_name", root_path, class:"taste_trip" %>
+      <%= link_to "Taste Trip", root_path, class:"taste_trip" %>
       <div class="top_btns">
         <% if user_signed_in? %>
           <div class="top_btn"><%= link_to "マイページ", user_path(current_user.id), class:"head_btn" %></div>
