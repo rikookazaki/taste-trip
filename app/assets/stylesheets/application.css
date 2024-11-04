@@ -47,7 +47,8 @@ header {
 .head_btn {
   text-decoration: none;
   color: brown;
-  font-weight: bold;
+  font-size: 15px;
+  font-family: "Kosugi Maru", sans-serif;
 }
 
 .top_btn {
@@ -120,6 +121,7 @@ header {
   background-color: wheat;
   color: brown;
   border-radius: 20px;
+  font-family: "Kosugi Maru", sans-serif;
 }
 
 .search-field{
@@ -165,6 +167,7 @@ header {
   border: none;
   border-radius: 15px;
   cursor: pointer;
+  font-family: "Kosugi Maru", sans-serif;
 }
 
 .result_search{
@@ -273,6 +276,7 @@ header {
   color: brown;
   border-radius: 20px;
   text-decoration: none;
+  font-family: "Kosugi Maru", sans-serif;
 }
 
 /* 店舗詳細ページ */
