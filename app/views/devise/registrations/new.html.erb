@@ -1,44 +1,49 @@
-<h2>新規登録</h2>
+<div class="main">
+
+<div class="devise_main">
+<h2 class="heading">新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :nickname, "ニックネーム(必須)" %><br />
-    <%= f.text_field :nickname %>
+    <%= f.label :nickname, "ニックネーム(必須)", class:"label" %><br />
+    <%= f.text_field :nickname, class:"field_new" %>
   </div>
 
   <div class="field">
-    <%= f.label :email, "メールアドレス(必須)" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, "メールアドレス(必須)", class:"label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"field_new" %>
   </div>
 
   <div class="field">
-    <%= f.label :password, "パスワード(必須)" %>
+    <%= f.label :password, "パスワード(必須)", class:"label" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"field_new" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, "パスワード確認(必須)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, "パスワード確認(必須)", class:"label" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"field_new" %>
   </div>
 
   <div class="field">
-    <%= f.label :birthday, "誕生日" %><br />
-    <%= f.date_select :birthday %>
+    <%= f.label :birthday, "誕生日", class:"label" %><br />
+    <%= f.date_select :birthday, class:"field_new" %>
   </div>
 
   <div class="field">
-    <%= f.label :gender, "性別" %><br />
-    <%= f.select :gender, options_for_select([["男性", 1], ["女性", 2], ["その他", 3]]), include_blank: true %>
+    <%= f.label :gender, "性別", class:"label" %><br />
+    <%= f.select :gender, options_for_select([["男性", 1], ["女性", 2], ["その他", 3]]), include_blank: true, class:"field_new" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "登録" %>
+    <%= f.submit "登録", class:"submit_btn"  %>
   </div>
 <% end %>
-
+</div>
 <%= render "devise/shared/links" %>
+
+</div>
