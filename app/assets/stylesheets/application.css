@@ -314,5 +314,12 @@ button.favorite-btn {
   border-radius: 15px;
 }
 
+.date_select select {
+  width: 30%; 
+  height: 30px;
+}
 
-
+.gender_select select{
+  height: 30px;
+  width: 30%;
+}
