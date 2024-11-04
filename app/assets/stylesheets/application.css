@@ -89,7 +89,7 @@ header {
 .world_map{
   width: 100%;
   height: 100%;
-  
+  opacity: 30%
 }
 
 .hero_search{
@@ -189,6 +189,19 @@ header {
   color: darkgreen;
   text-decoration: none;
 }
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3列のグリッドを作成 */
+  gap: 10px; /* 画像間のスペース */
+}
+
+.gallery-image {
+  width: 100%; /* 画像をコンテナに合わせる */
+  height: 100%; /* 高さを自動調整 */
+  object-fit: cover; /* 画像の比率を保持しつつ、指定したサイズに収める */
+}
+
 
 .info_index{
   color: dimgray;
@@ -300,3 +313,5 @@ button.favorite-btn {
   border: none;
   border-radius: 15px;
 }
+
+/* ログインページ */

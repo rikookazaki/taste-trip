@@ -3,18 +3,19 @@
   <div class="restaurant">
   <div class="restaurant_name"><%= @restaurant.name %></div><br><br>
 
-
+  <div class="image-gallery">
   <% if @restaurant.images.attached? %>
     <!-- ActiveStorage画像を表示 -->
     <% @restaurant.images.each do |image| %>
-      <%= image_tag image.variant(resize: '200x200') %>
+      <%= image_tag image.variant(resize: '200x200'), class: "gallery-image" %>
     <% end %>
   <% else %>
     <!-- Google Places API画像を表示 -->
     <% JSON.parse(@restaurant.api_image_urls || '[]').each do |url| %>
-      <%= image_tag url, size: '200x200' %>
+      <%= image_tag url, class: "gallery-image" %>
     <% end %>
-  <% end %><br><br>
+  <% end %>
+  </div>
 
     <% if user_signed_in? %>
       <% if current_user.restaurants.include?(@restaurant) %>
