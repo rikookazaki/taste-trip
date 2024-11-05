@@ -4,7 +4,10 @@ class RestaurantsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    @q = Restaurant.ransack(params[:q])
+    if current_user&.admin?
+      @restaurants = Restaurant.pending
+    else
+    @q = Restaurant.approved.ransack(params[:q])
     @restaurants = @q.result.includes(:countries, :genres, :situations)
     if params[:q].present?
       # 国名によるフィルタリング
@@ -31,6 +34,7 @@ class RestaurantsController < ApplicationController
     end
     # 条件を満たす飲食店を表示
     @restaurants = @restaurants.distinct
+    end
   end
 
 

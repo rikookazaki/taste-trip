@@ -176,6 +176,10 @@ header {
   margin: 0px 30px;
 }
 
+.result_search ul{
+  list-style-type: none;
+}
+
 .result_search li{
   padding: 10px;
   border-radius: 10px;

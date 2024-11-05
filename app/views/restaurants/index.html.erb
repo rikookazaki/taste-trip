@@ -1,3 +1,16 @@
+<% if current_user&.admin? %>
+  <div class="main">
+    <div class="result_search">
+    申請中の飲食店一覧
+      <ul>
+        <% @restaurants.each do |restaurant| %>
+          <%= render partial: "restaurants", locals: { restaurant: restaurant } %>
+        <% end %>
+      </ul>
+    </div>
+
+<% else %>
+
 <div class="main">
 
   <% unless params[:q].present? %>
@@ -84,3 +97,4 @@
   <% end %>
 
 </div>
+<% end %>
