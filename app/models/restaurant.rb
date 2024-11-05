@@ -26,4 +26,13 @@ class Restaurant < ApplicationRecord
     JSON.parse(api_image_urls || '[]')
   end
 
+  validates :name, :address, :phone_num, presence: true
+  validate :at_least_one_country
+
+  private
+
+  def at_least_one_country
+    errors.add(:countries, "を少なくとも1つ選択してください") if countries.empty?
+  end
+
 end
