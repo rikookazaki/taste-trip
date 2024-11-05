@@ -1,18 +1,23 @@
 <li>
-  <div class="restaurant_name_top"><%= link_to restaurant.name, restaurant_path(restaurant.id), class:"restaurant_name" %></div>
+  <div class="restaurant_name_top">
+    <%= link_to restaurant.name, restaurant_path(restaurant.id), class:"restaurant_name" %>
+    <% if current_user&.admin? && restaurant.pending? %>
+      <%= link_to '承認', approve_restaurant_path(restaurant), data: { turbo_method: :patch }, class:"link_to_root" %>
+    <% end %>
+  </div>
 
   <div class="image-gallery">
-  <% if restaurant.images.attached? %>
-    <!-- ActiveStorage画像を表示 -->
-    <% restaurant.images.each do |image| %>
-      <%= image_tag image.variant(resize: '200x200'), class: "gallery-image" %>
+    <% if restaurant.images.attached? %>
+      <!-- ActiveStorage画像を表示 -->
+      <% restaurant.images.each do |image| %>
+        <%= image_tag image.variant(resize: '200x200'), class: "gallery-image" %>
+      <% end %>
+    <% else %>
+      <!-- Google Places API画像を表示 -->
+      <% JSON.parse(restaurant.api_image_urls || '[]').each do |url| %>
+        <%= image_tag url, class: "gallery-image"  %>
+      <% end %>
     <% end %>
-  <% else %>
-    <!-- Google Places API画像を表示 -->
-    <% JSON.parse(restaurant.api_image_urls || '[]').each do |url| %>
-      <%= image_tag url, class: "gallery-image"  %>
-    <% end %>
-  <% end %>
   </div>
   
   <div class="info_index"><span class="info_item">住所：</span><%= restaurant.address %></div>
@@ -22,5 +27,4 @@
   <% restaurant.countries.each do |country| %>
     <span class="features"><%= country.name %></span>
   <% end %>
-  </div>
 </li>
