@@ -14,7 +14,7 @@
 
   <%= form_with model:@restaurant, local: true, class:"form_new" do |f| %>
     <div class="search_new">
-      <%= f.label :images, "イメージ写真(複数可)", class:"label"%><br>
+      <%= f.label :images, "イメージ写真(複数可)", class:"label"%>
       <%= f.file_field :images, multiple: true, class:"field_new" %>
     </div><br>
 
