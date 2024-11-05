@@ -1,4 +1,6 @@
 class Restaurant < ApplicationRecord
+  enum status: { pending: 'pending', approved: 'approved', rejected: 'rejected' }
+
   has_many :restaurant_countries, dependent: :destroy
   has_many :countries, through: :restaurant_countries
 
