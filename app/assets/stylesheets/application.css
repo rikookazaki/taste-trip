@@ -32,10 +32,10 @@ header {
 
 
 .taste_trip{
-  font-size: 20px;
+  font-size: 30px;
   color: brown;
   text-decoration: none;
-  font-family: "DynaPuff", system-ui;
+  font-family: "Itim", serif;
 }
 
 .top_btns {
@@ -47,9 +47,8 @@ header {
 .head_btn {
   text-decoration: none;
   color: brown;
-  border-radius: 20px;
-  padding: 10px 15px;
-  background-color: wheat;
+  font-size: 15px;
+  font-family: "Kosugi Maru", sans-serif;
 }
 
 .top_btn {
@@ -67,6 +66,7 @@ header {
 /* トップページ */
 
 .content {
+  min-height: calc(100vh - 120px);
   width: 100vw;
   background-color: white; 
   padding: 40px 0 ;
@@ -81,11 +81,34 @@ header {
   margin:  0 auto;
 }
 
-.country_field{
-  height: 100px;
-  width: 60%;
+.hero{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.world_map{
+  width: 100%;
+  height: 100%;
+  opacity: 30%
+}
+
+.hero_search{
+  width: 70%;
   margin: 0 auto;
-  
+  position: absolute;
+  top: 30%;
+  left: 20%;
+}
+
+.country_field_with_button{
+  width: 100%;
+}
+
+.input_and_button{
+  display: flex;
+  align-items: center; /* 入力フィールドとボタンの垂直位置を中央揃え */
+  gap: 10px; /* フィールドとボタンの間に余白 */
 }
 
 .label_top{
@@ -98,11 +121,12 @@ header {
   background-color: wheat;
   color: brown;
   border-radius: 20px;
+  font-family: "Kosugi Maru", sans-serif;
 }
 
 .search-field{
   height: 50px;
-  width: 100%;
+  width: 80%;
 }
 
 .field{
@@ -133,13 +157,6 @@ header {
   font-size: small;
 }
 
-.actions {
-  text-align: center;
-  width: 60%;
-  margin: 0 auto;
-  padding-top: 15px;
-}
-
 
 .submit_btn{
   background-color: wheat;
@@ -150,12 +167,13 @@ header {
   border: none;
   border-radius: 15px;
   cursor: pointer;
+  font-family: "Kosugi Maru", sans-serif;
 }
 
 .result_search{
   padding: 20px;
   border-radius: 10px;
-  margin: 30px 100px;
+  margin: 0px 30px;
 }
 
 .result_search li{
@@ -175,6 +193,19 @@ header {
   text-decoration: none;
 }
 
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3列のグリッドを作成 */
+  gap: 10px; /* 画像間のスペース */
+}
+
+.gallery-image {
+  width: 100%; /* 画像をコンテナに合わせる */
+  height: 100%; /* 高さを自動調整 */
+  object-fit: cover; /* 画像の比率を保持しつつ、指定したサイズに収める */
+}
+
+
 .info_index{
   color: dimgray;
   margin-bottom: 10px;
@@ -182,6 +213,13 @@ header {
 
 .info_item{
   font-weight: bold;
+}
+
+.actions {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 15px;
 }
 
 /* 新規店舗登録ページ */
@@ -238,12 +276,13 @@ header {
   color: brown;
   border-radius: 20px;
   text-decoration: none;
+  font-family: "Kosugi Maru", sans-serif;
 }
 
 /* 店舗詳細ページ */
 
 .restaurant{
-  width: 70%;
+  width: 80%;
   margin: 20px auto;
 }
 
@@ -277,4 +316,17 @@ button.favorite-btn {
   background-color: green;
   border: none;
   border-radius: 15px;
+}
+
+
+/* ログイン・サインアップページ */
+
+.date_select select {
+  width: 30%; 
+  height: 30px;
+}
+
+.gender_select select{
+  height: 30px;
+  width: 30%;
 }

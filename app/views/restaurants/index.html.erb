@@ -2,18 +2,23 @@
 
   <% unless params[:q].present? %>
 
-    <%= search_form_for @q, html: { id: "initial-search-form" } do |f| %>
-      <!-- 国・地域の絞り込み -->
-      <div class="country_field">
-        <div class="label_top"><%= f.label :countries_name_or_countries_region_cont, "行きたい国や地域名を入力", class: "label"%></div>
-        <%= f.search_field :countries_name_or_countries_region_cont, class: "search-field" %>
-      </div><br>
+    <div class="hero" id="initial-search-form">
+      <%= image_tag "sekaichizu.png", class: "world_map" %>
 
-      <!-- 検索ボタン -->
-      <div class="actions">
-        <%= button_tag "次へ", class:"submit_btn", id: "initial-submit-btn" %>
+      <div class="hero_search" >
+        <%= search_form_for @q do |f| %>
+            <!-- 国・地域の絞り込み -->
+            <div class="country_field_with_button">
+              <div class="label_top"><%= f.label :countries_name_or_countries_region_cont, "行きたい国や地域名を入力", class: "label"%></div>
+              <div class="input_and_button">
+                <%= f.search_field :countries_name_or_countries_region_cont, class: "search-field" %>
+                <!-- 検索ボタン -->
+                <%= button_tag "次へ", class:"submit_btn", id: "initial-submit-btn" %>
+              </div>
+            </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
 
       <!-- 追加の検索フィールド。初期状態では非表示 -->
       <div id="advanced-search-fields" style="display: none;">
