@@ -26,6 +26,6 @@ class Restaurant < ApplicationRecord
     JSON.parse(api_image_urls || '[]')
   end
 
-  validates :name, :address, :phone_num, :country_ids, presence: true
-  
+  validates :name, :address, :country_ids, presence: true
+  validates :phone_num, presence: true, format: { with: /\A\d{10,11}\z/, message: "は10桁または11桁の半角数字のみで入力してください" }
 end
