@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :find_restaurant, only: [:show, :edit, :update, :destroy, :approve]
   before_action :get_3tables, only: [:new, :edit, :create, :update]
   before_action :authenticate_user!, except: [:show, :index]
 
@@ -79,7 +79,19 @@ class RestaurantsController < ApplicationController
     redirect_to root_path
   end
   
-  
+
+  def approve
+    if current_user&.admin?  # 管理者ユーザーのみがこのアクションを実行できる
+      @restaurant.status = 'approved'  # ステータスを承認に変更
+      unless @restaurant.save
+        Rails.logger.error("Failed to approve restaurant: #{@restaurant.errors.full_messages.join(", ")}")
+      end
+      redirect_to root_path
+    else
+      redirect_to restaurants_path
+    end
+  end
+
 
   private
 
