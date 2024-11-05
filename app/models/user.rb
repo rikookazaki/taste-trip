@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  enum role: { user: 'user', admin: 'admin' }
+
   has_many :favorites
   has_many :restaurants, through: :favorites
 
