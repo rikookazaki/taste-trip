@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :restaurants, through: :favorites
+
+  validates :nickname, presence: true
 end

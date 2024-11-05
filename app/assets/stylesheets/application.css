@@ -228,6 +228,19 @@ header {
   text-align: center;
 }
 
+.error_explanation{
+  width: 100%;
+}
+
+.error_explanation ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+.error_explanation li {
+  color: red;
+}
+
 .form_new{
   margin: 30px auto;
   width: 50%;

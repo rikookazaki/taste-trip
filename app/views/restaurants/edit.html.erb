@@ -1,6 +1,16 @@
 <div class="main">
   <h1 class="heading">編集</h1>
 
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_with(model:@restaurant, local: true, class:"form_new") do |f| %>
     <div class="search_new">
       <%= f.label :images, "イメージ写真(複数可)", class:"label"%><br>

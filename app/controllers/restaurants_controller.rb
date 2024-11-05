@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
-  before_action :get_3tables, only: [:new, :edit]
+  before_action :get_3tables, only: [:new, :edit, :create, :update]
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
@@ -44,7 +44,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.save
       redirect_to root_path
     else 
-      render :new, status: :unprocessable_entitiy
+      render :new, status: :unprocessable_entity
     end
   end
 
