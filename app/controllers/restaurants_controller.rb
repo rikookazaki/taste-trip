@@ -92,6 +92,10 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def introduce
+    
+  end
+
 
   private
 
