@@ -1,10 +1,13 @@
 class RestaurantsController < ApplicationController
-  before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :find_restaurant, only: [:show, :edit, :update, :destroy, :approve]
   before_action :get_3tables, only: [:new, :edit, :create, :update]
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    @q = Restaurant.ransack(params[:q])
+    if current_user&.admin?
+      @restaurants = Restaurant.pending
+    else
+    @q = Restaurant.approved.ransack(params[:q])
     @restaurants = @q.result.includes(:countries, :genres, :situations)
     if params[:q].present?
       # 国名によるフィルタリング
@@ -31,6 +34,7 @@ class RestaurantsController < ApplicationController
     end
     # 条件を満たす飲食店を表示
     @restaurants = @restaurants.distinct
+    end
   end
 
 
@@ -75,7 +79,19 @@ class RestaurantsController < ApplicationController
     redirect_to root_path
   end
   
-  
+
+  def approve
+    if current_user&.admin?  # 管理者ユーザーのみがこのアクションを実行できる
+      @restaurant.status = 'approved'  # ステータスを承認に変更
+      unless @restaurant.save
+        Rails.logger.error("Failed to approve restaurant: #{@restaurant.errors.full_messages.join(", ")}")
+      end
+      redirect_to root_path
+    else
+      redirect_to restaurants_path
+    end
+  end
+
 
   private
 

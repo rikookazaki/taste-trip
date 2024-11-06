@@ -1,5 +1,5 @@
 <div class="main">
-  <h1 class="heading">新規店舗登録</h1>
+  <h1 class="heading">店舗登録申請</h1>
 
   <% if @restaurant.errors.any? %>
     <div class="error_explanation">
@@ -14,7 +14,7 @@
 
   <%= form_with model:@restaurant, local: true, class:"form_new" do |f| %>
     <div class="search_new">
-      <%= f.label :images, "イメージ写真(複数可)", class:"label"%><br>
+      <%= f.label :images, "イメージ写真(複数可)", class:"label"%>
       <%= f.file_field :images, multiple: true, class:"field_new" %>
     </div><br>
 
@@ -106,7 +106,7 @@
     </div><br>
 
     <div class="action_new">
-      <%= f.submit "登録する", class:"submit_btn" %>
+      <%= f.submit "申請する", class:"submit_btn" %>
     </div>
 
   <% end %>

@@ -1,4 +1,6 @@
 class Restaurant < ApplicationRecord
+  enum status: { pending: 'pending', approved: 'approved', rejected: 'rejected' }
+
   has_many :restaurant_countries, dependent: :destroy
   has_many :countries, through: :restaurant_countries
 
@@ -26,6 +28,13 @@ class Restaurant < ApplicationRecord
     JSON.parse(api_image_urls || '[]')
   end
 
-  validates :name, :address, :country_ids, presence: true
-  validates :phone_num, presence: true, format: { with: /\A\d{10,11}\z/, message: "は10桁または11桁の半角数字のみで入力してください" }
+  def approved?
+    status == 'approved'
+  end
+
+  def pending?
+    status == 'pending'
+  end
+
+  validates :name, :address, :phone_num, :country_ids, presence: true
 end
