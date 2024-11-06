@@ -28,5 +28,13 @@ class Restaurant < ApplicationRecord
     JSON.parse(api_image_urls || '[]')
   end
 
+  def approved?
+    status == 'approved'
+  end
+
+  def pending?
+    status == 'pending'
+  end
+
   validates :name, :address, :phone_num, :country_ids, presence: true
 end
