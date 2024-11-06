@@ -347,3 +347,39 @@ button.favorite-btn {
   height: 30px;
   width: 30%;
 }
+
+/* 使い方説明ページ */
+.top_itr{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.trip_women{
+  height: 120px;
+}
+
+.how_to_use{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.how_to_use li{
+  margin-bottom: 20px;
+}
+
+.how_to{
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.explain_itr{
+  font-size: 13px;
+}
+
+.last_itr{
+  text-align: center;
+  padding: 30px 0;
+}
