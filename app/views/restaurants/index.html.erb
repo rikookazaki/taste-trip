@@ -25,7 +25,7 @@
             <div class="country_field_with_button">
               <div class="label_top"><%= f.label :countries_name_or_countries_region_cont, "行きたい国や地域名を入力", class: "label"%></div>
               <div class="input_and_button">
-                <%= f.search_field :countries_name_or_countries_region_cont, class: "search-field" %>
+                <%= f.search_field :countries_name_or_countries_region_cont, placeholder: "例）イタリア　ヨーロッパなど", class: "search-field" %>
                 <!-- 検索ボタン -->
                 <%= button_tag "次へ", class:"submit_btn", id: "initial-submit-btn" %>
               </div>

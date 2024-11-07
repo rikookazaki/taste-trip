@@ -379,6 +379,10 @@ button.favorite-btn {
   font-size: 13px;
 }
 
+.extra_explain{
+  font-size: 10px;
+}
+
 .last_itr{
   text-align: center;
   padding: 30px 0;
