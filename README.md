@@ -1,24 +1,70 @@
-# README
+# アプリケーション名
+Taste Trip  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション概要
+外国料理を提供している飲食店を、提供料理の国名から検索することができます。  
 
-Things you may want to cover:
+# URL
+[https://taste-trip.onrender.com](https://taste-trip.onrender.com)  
 
-* Ruby version
+# テスト用アカウント
+* メールアドレス：test@sample.com  
+* パスワード：test11  
 
-* System dependencies
+# 利用方法
+### 検索する
+1. トップページにある検索バーに、国や地域名を入力し、「次へ」をクリック。
+2. 絞り込み条件が表示されるので、任意で検索条件を追加し、「検索」をクリック。
+3. 条件に合う飲食店が一覧表示される。店名をクリックすることで詳細情報が確認できる。  
+<img src=https://i.gyazo.com/8e1b05d3e957d576f392631b564fbb0d.gif height=250px >  
 
-* Configuration
+### ユーザー登録
+1. ヘッダーにある「ユーザー登録」の文字をクリックし、ユーザー新規登録ページへ遷移。
+2. 必要事項（ニックネーム、メールアドレス、パスワードは必須）を入力後、「登録」ボタンをクリック。
+### お気に入り機能
+1. ログイン時、飲食店詳細ページにある「お気に入りに追加」ボタンをクリック。
+2. ヘッダーの「マイページ」から、お気に入りに追加した飲食店を一覧表示できる。  
+<img src=https://i.gyazo.com/c5064895b3e575d832eee928ff73d8a3.gif height=250px >  
+### 店舗登録
+1. ログイン時、ヘッダーの「店舗登録申請」から申請ページへ遷移。
+2. 必要事項（店名、住所、電話番号は必須）を入力後、「申請する」ボタンをクリック。
+3. 管理者による承認後、検索結果に表示されるようになる。  
+# アプリケーションを作成した背景
+時間やお金に余裕がないが、海外気分を味わいたいという思いを、国内にいながら外国料理を味わうことで叶えられると考えた。  
+行きたい国や地域を入力すると、その国や地域の料理が食べられる飲食店を調べてくれる機能により、その時の気分によって、行きたい国に旅行に出かけたような感覚を提供したいという思いで開発した。
+# 実装予定の機能
+* レビュー機能
+* 画像のスライダー機能
+# データベース設計
+<img src=https://i.gyazo.com/4b9a57f07b292d000b5f6dfd8328b728.png width=800px>
 
-* Database creation
+# 画面遷移図
+<img src=https://i.gyazo.com/5acbaf9db295067f0c0764281745637d.png height=400px>
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 開発環境
+* フロントエンド
+  - HTML・CSS
+  - JavaScript
+* バックエンド  
+  - Ruby on Rails(v7.0.0)
+* テキストエディタ  
+  - VSCord
+* タスク管理  
+  - Github/projects
+# ローカルでの動作方法
+以下のコマンドを順に実行。  
+% git clone https://github.com/rikookazaki/taste-trip.git  
+% cd taste-trip  
+% bundle install  
+% rails db:create  
+% rails db:migrate  
+% rails db:seed
+# 工夫したポイント
+* Ransackを導入し、一度の送信で複数個の条件を加えた検索フォームを作成しました。  
+本アプリの一番の目的である行きたい国からの検索の他に、その他の条件で絞り込むこともできるようにしたことで、よりユーザーの気分や好みに近い飲食店を表示できます。
+* UIは、黄色や緑色を基調とした明るめの色味で、イラストやボタンなどに丸みのあるものを選んだことで、親しみやすさと可愛らしさを意識しました。
+# 改善点
+* 飲食店情報を編集した際に、もとから登録されていた画像が消えてしまう点
+* Google place APIを用いて登録した飲食店の、住所が英語表記になってしまっている点
+* 現在の詳細ページの内容では、飲食店の雰囲気を具体的にイメージすることができない点
+# 制作時間
