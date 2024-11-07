@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show, :edit, :update, :destroy, :approve]
   before_action :get_3tables, only: [:new, :edit, :create, :update]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :introduce]
 
   def index
     if current_user&.admin?
@@ -90,6 +90,10 @@ class RestaurantsController < ApplicationController
     else
       redirect_to restaurants_path
     end
+  end
+
+  def introduce
+    
   end
 
 

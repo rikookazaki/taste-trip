@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     member do
       patch :approve
     end
+    collection do
+      get :introduce
+    end
     resource :favorites, only: [:create, :destroy]
   end
   resources :users, only: :show
