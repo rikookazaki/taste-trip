@@ -25,7 +25,7 @@
       <% if current_user.restaurants.include?(@restaurant) %>
         <%= button_to 'お気に入りから削除', restaurant_favorites_path(@restaurant), method: :delete, class: 'favorite-btn' %>
       <% else %>
-        <%= button_to 'お気に入りに追加', restaurant_favorites_path(@restaurant), method: :post, class: 'favorite-btn' %>
+        <%= button_to 'お気に入り追加', restaurant_favorites_path(@restaurant), method: :post, class: 'favorite-btn' %>
       <% end %>
     <% end %>
 
