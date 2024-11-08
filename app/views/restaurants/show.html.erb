@@ -1,25 +1,25 @@
 <div class="main">
 
   <div class="restaurant">
-  <div class="restaurant_name"><%= @restaurant.name %>
-    <% if current_user&.admin? && @restaurant.pending? %>
-      <%= link_to '承認', approve_restaurant_path(@restaurant), data: { turbo_method: :patch }, class:"link_to_root" %>
-    <% end %>
-  </div><br><br>
+    <div class="restaurant_name"><%= @restaurant.name %>
+      <% if current_user&.admin? && @restaurant.pending? %>
+        <%= link_to '承認', approve_restaurant_path(@restaurant), data: { turbo_method: :patch }, class:"link_to_root" %>
+      <% end %>
+    </div><br><br>
 
-  <div class="image-gallery">
-  <% if @restaurant.images.attached? %>
-    <!-- ActiveStorage画像を表示 -->
-    <% @restaurant.images.each do |image| %>
-      <%= image_tag image.variant(resize: '200x200'), class: "gallery-image" %>
-    <% end %>
-  <% else %>
-    <!-- Google Places API画像を表示 -->
-    <% JSON.parse(@restaurant.api_image_urls || '[]').each do |url| %>
-      <%= image_tag url, class: "gallery-image" %>
-    <% end %>
-  <% end %>
-  </div>
+    <div class="image-gallery">
+      <% if @restaurant.images.attached? %>
+        <!-- ActiveStorage画像を表示 -->
+        <% @restaurant.images.each do |image| %>
+          <%= image_tag image.variant(resize: '200x200'), class: "gallery-image" %>
+        <% end %>
+      <% else %>
+        <!-- Google Places API画像を表示 -->
+        <% JSON.parse(@restaurant.api_image_urls || '[]').each do |url| %>
+          <%= image_tag url, class: "gallery-image" %>
+        <% end %>
+      <% end %>
+    </div>
 
     <% if user_signed_in? && @restaurant.approved? %>
       <% if current_user.restaurants.include?(@restaurant) %>
@@ -29,64 +29,65 @@
       <% end %>
     <% end %>
 
-  <div class="description">
-    <%= @restaurant.description %>
-  </div><br><br>
+    <div class="description">
+      <%= @restaurant.description %>
+    </div><br><br>
 
-  <div class="info">
-    <div>
-      住所：<%= @restaurant.address %>
-    </div><br>
+    <div class="info">
+      <div>
+        住所：<%= @restaurant.address %>
+      </div><br>
 
-    <div>
-      電話番号:<%= @restaurant.phone_num %>
-    </div><br>
+      <div>
+        電話番号:<%= @restaurant.phone_num %>
+      </div><br>
 
-    <div>
-      アクセス:<%= @restaurant.access %>
-    </div><br>
+      <div>
+        アクセス:<%= @restaurant.access %>
+      </div><br>
 
-    <div>
-      営業時間:
-      <% @restaurant.opening_hours.split(', ').each do |hour| %>
-        <div><%= hour %></div>
-      <% end %>
-    </div><br>
+      <div>
+        営業時間:
+        <% @restaurant.opening_hours.split(', ').each do |hour| %>
+          <div><%= hour %></div>
+        <% end %>
+      </div><br>
 
-    <div>
-      公式サイト:<%= @restaurant.website %>
-    </div><br>
+      <div>
+        公式サイト:<%= @restaurant.website %>
+      </div><br>
 
-    <div>
-      支払い方法:<%= @restaurant.payment %>
-    </div><br><br><br>
+      <div>
+        支払い方法:<%= @restaurant.payment %>
+      </div><br><br><br>
 
-    <div>
-      提供料理の国名：
-      <% @restaurant.countries.each do |country| %>
-        <span class="features"><%= country.name %></span>
-      <% end %>
-    </div><br>
+      <div>
+        提供料理の国名：
+        <% @restaurant.countries.each do |country| %>
+          <span class="features"><%= country.name %></span>
+        <% end %>
+      </div><br>
 
-    <div>
-      ジャンル：
-      <% @restaurant.genres.each do |genre| %>
-        <span class="features"><%= genre.name %></span>
-      <% end %>
-    </div><br>
+      <div>
+        ジャンル：
+        <% @restaurant.genres.each do |genre| %>
+          <span class="features"><%= genre.name %></span>
+        <% end %>
+      </div><br>
 
-    <div>
-      利用シーン：
-      <% @restaurant.situations.each do |situation| %>
-        <span class="features"><%= situation.name %></span>
-      <% end %>
-    </div><br>
-  </div><br><br>
+      <div>
+        利用シーン：
+        <% @restaurant.situations.each do |situation| %>
+          <span class="features"><%= situation.name %></span>
+        <% end %>
+      </div><br>
+    </div><br><br>
   
-  <% if user_signed_in?  && @restaurant.approved? %>
-    <%= link_to "編集する", edit_restaurant_path(@restaurant.id), class:"link_to_root"%>
-    <%= link_to "削除する", restaurant_path(@restaurant.id), data: { turbo_method: :delete }, class:"link_to_root" %>
-  <% end %>
-  <%= link_to "戻る", restaurants_path, class:"link_to_root" %>
+    <% if user_signed_in?  && @restaurant.approved? %>
+      <%= link_to "編集する", edit_restaurant_path(@restaurant.id), class:"link_to_root"%>
+      <%= link_to "削除する", restaurant_path(@restaurant.id), data: { turbo_method: :delete }, class:"link_to_root" %>
+    <% end %>
+    <%= link_to "戻る", restaurants_path, class:"link_to_root" %>
 
+  </div>
 </div>

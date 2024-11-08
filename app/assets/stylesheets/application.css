@@ -20,19 +20,18 @@
 
 /* ヘッダー */
 header {
-  height: 80px;
+  height: 12vh;
   width: 100vw;
   background-color: #fff3cd;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 50px; 
-  
 }
 
 
 .taste_trip{
-  font-size: 30px;
+  font-size: 2vw;
   color: brown;
   text-decoration: none;
   font-family: "Itim", serif;
@@ -47,7 +46,7 @@ header {
 .head_btn {
   text-decoration: none;
   color: brown;
-  font-size: 15px;
+  font-size: 1vw;
   font-family: "Kosugi Maru", sans-serif;
 }
 
@@ -58,7 +57,7 @@ header {
 
 /* フッター */
  footer{
-  height: 40px;
+  height: 6vh;
   width: 100vw;
   background-color: #fff3cd;
  }
@@ -112,7 +111,7 @@ header {
 }
 
 .label_top{
-  margin-bottom: 15px;
+  margin: 15px 0 ;
 }
 
 .label {
@@ -122,11 +121,13 @@ header {
   color: brown;
   border-radius: 20px;
   font-family: "Kosugi Maru", sans-serif;
+  font-size: 1.5vw;
 }
 
 .search-field{
   height: 50px;
   width: 80%;
+  font-size: 1vw;
 }
 
 .field{
@@ -137,6 +138,7 @@ header {
 
 .checkbox_genres{
   display: inline-block;
+  font-size: small;
 }
 
 .item{
@@ -145,7 +147,6 @@ header {
 
 .checkbox_situations{
   display: inline-block;
-  font-size: small;
 }
 
 .situation_item{
@@ -161,7 +162,7 @@ header {
 .submit_btn{
   background-color: wheat;
   color: brown;
-  font-size: 15px;
+  font-size: 1.5vw;
   font-weight: bold;
   padding: 10px 20px;
   border: none;
@@ -191,7 +192,7 @@ header {
 }
 
 .restaurant_name{
-  font-size: 20px;
+  font-size: 2vw;
   font-weight: bold;
   color: darkgreen;
   text-decoration: none;
@@ -213,6 +214,7 @@ header {
 .info_index{
   color: dimgray;
   margin-bottom: 10px;
+  font-size: 1.5vw;
 }
 
 .info_item{
@@ -288,6 +290,7 @@ header {
 
 .link_to_root{
   font-weight: bold;
+  font-size: 1vw;
   padding: 10px 15px;
   background-color: wheat;
   color: brown;
@@ -315,19 +318,23 @@ header {
 .info{
   width: 90%;
   margin: 0 auto;
+  font-size: 1.5vw;
+  color: dimgray;
 }
 
 
 .features{
   background-color: darkgreen;
   color: white;
-  padding: 5px 10px;
+  padding: 7px 12px;
   border-radius: 15px;
+  font-size: 1.5vw;
 }
 
 button.favorite-btn {
+  margin: 10px 0;
   padding: 5px 10px;
-  font-size: 10px;
+  font-size: 1vw;
   font-weight: bold;
   color: white;
   background-color: green;
