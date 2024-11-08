@@ -18,5 +18,5 @@ function color() {
 
 }
 
-window.addEventListener('load', color)
-window.addEventListener('turbo:render', color)
+window.addEventListener('turbo:load', color);
+window.addEventListener('turbo:render', color);
