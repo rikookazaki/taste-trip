@@ -1,7 +1,7 @@
 function color() {
-  const linksToRoot = document.querySelectorAll(".link_to_root");
-  const headButton = document.querySelectorAll(".head_btn");
-  const submitButton = document.querySelectorAll(".submit_btn");
+  const linksToRoot = document.querySelectorAll(".link_to_root");   //検索画面に戻るボタン
+  const headButton = document.querySelectorAll(".head_btn");        //ヘッダーのボタン
+  const submitButton = document.querySelectorAll(".submit_btn");    //検索・申請の送信ボタン
 
   linksToRoot.forEach(function(link) {
     link.addEventListener('mouseover', function() {
