@@ -5,8 +5,6 @@ function color() {
   const favoriteButton = document.querySelectorAll(".favorite-btn");       //お気に入りボタン
   const restaurantName = document.querySelectorAll(".restaurant_name");    //店名
 
-
-
   linksToRoot.forEach(function(link) {
     link.addEventListener('mouseover', function() {
       link.setAttribute("style", "background-color:#f1c574;");
@@ -57,3 +55,20 @@ function color() {
 document.addEventListener("DOMContentLoaded", color);
 document.addEventListener("turbo:load", color);
 
+
+
+function transform() {
+  const mainElements = document.querySelectorAll(".main");
+  mainElements.forEach(element => {
+    // 一旦 'fade-in' クラスを削除してリセット
+    element.classList.remove("fade-in");
+    
+    // 少し遅延を入れて再度 'fade-in' クラスを追加し、アニメーションを確実に発動
+    setTimeout(() => {
+      element.classList.add("fade-in");
+    }, 10);  // 10ミリ秒の遅延
+  });
+}
+
+document.addEventListener("DOMContentLoaded", transform);
+document.addEventListener("turbo:load", transform);
