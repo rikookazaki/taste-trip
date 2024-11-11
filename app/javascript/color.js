@@ -1,25 +1,7 @@
 function color() {
-  const submitButton = document.getElementById("initial-submit-btn");
-  const secondSubmitButton = document.getElementById("second-submit-btn");
   const linksToRoot = document.querySelectorAll(".link_to_root");
-
-  if (submitButton) {
-    submitButton.addEventListener('mouseover', function() {
-      submitButton.setAttribute("style", "background-color:#f1c574;");
-    });
-    submitButton.addEventListener('mouseout', function() {
-      submitButton.removeAttribute("style");
-    });
-  }
-
-  if (secondSubmitButton) {
-    secondSubmitButton.addEventListener('mouseover', function() {
-      secondSubmitButton.setAttribute("style", "background-color:#f1c574;");
-    });
-    secondSubmitButton.addEventListener('mouseout', function() {
-      secondSubmitButton.removeAttribute("style");
-    });
-  }
+  const headButton = document.querySelectorAll(".head_btn");
+  const submitButton = document.querySelectorAll(".submit_btn");
 
   linksToRoot.forEach(function(link) {
     link.addEventListener('mouseover', function() {
@@ -27,6 +9,24 @@ function color() {
     });
     link.addEventListener('mouseout', function() {
       link.removeAttribute("style");
+    });
+  });
+
+  headButton.forEach(function(btn) {
+    btn.addEventListener('mouseover', function() {
+      btn.setAttribute("style", "color:#d3a2a2;");
+    });
+    btn.addEventListener('mouseout', function() {
+      btn.removeAttribute("style");
+    });
+  });
+
+  submitButton.forEach(function(btn) {
+    btn.addEventListener('mouseover', function() {
+      btn.setAttribute("style", "background-color:#f1c574;");
+    });
+    btn.addEventListener('mouseout', function() {
+      btn.removeAttribute("style");
     });
   });
 }
