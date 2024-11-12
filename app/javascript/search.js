@@ -1,11 +1,11 @@
-window.addEventListener("turbo:load", function () {
-  const mainElements = document.querySelectorAll(".main"); // .main クラスの要素を取得
-  const initialSearchForm = document.getElementById("initial-search-form");
-  const initialSubmitBtn = document.getElementById("initial-submit-btn");
-  const advancedSearchFields = document.getElementById("advanced-search-fields");
-  const secondSubmitBtn = document.getElementById("second-submit-btn");
+function search() {
+  const mainElements = document.querySelectorAll(".main");                          // .main クラスの要素を取得
+  const initialSearchForm = document.getElementById("initial-search-form");         // 国名検索フィールド
+  const initialSubmitBtn = document.getElementById("initial-submit-btn");           // 「次へ」ボタン
+  const advancedSearchFields = document.getElementById("advanced-search-fields");   // 追加の検索フィールド
+  const secondSubmitBtn = document.getElementById("second-submit-btn");             // 「検索」ボタン
 
-  // 初回読み込み時に main 要素のアニメーションを発動
+  // main要素のアニメーションの関数
   function animateMainElements() {
     mainElements.forEach(element => {
       element.classList.remove("fade-in");
@@ -15,10 +15,10 @@ window.addEventListener("turbo:load", function () {
     });
   }
 
-  // ページが最初に読み込まれたときに main 要素をアニメーション
+  // ページが最初に読み込まれたときのmain要素フェードイン
   animateMainElements();
 
-  // 「次へ」ボタンをクリックしたときの処理
+  // 「次へ」ボタンをクリックしたとき
   initialSubmitBtn.addEventListener("click", function(event) {
     event.preventDefault(); // デフォルトの送信を防止
 
@@ -30,11 +30,11 @@ window.addEventListener("turbo:load", function () {
     const countryInput = document.querySelector(".search-field").value;
     document.getElementById("hidden-country-field").value = countryInput;
 
-    // main 要素のアニメーションをリセット
+    // main要素の状態を一度リセットし再びフェードイン
     animateMainElements();
   });
 
-  // 「検索」ボタンをクリックしたときの処理
+  // 「検索」ボタンをクリックしたとき
   secondSubmitBtn.addEventListener("click", function(event) {
     // advanced-search-fields を非表示にし、検索結果を表示
     advancedSearchFields.style.display = "none";
@@ -42,4 +42,7 @@ window.addEventListener("turbo:load", function () {
     // main 要素のアニメーションをリセット
     animateMainElements();
   });
-});
+}
+
+document.addEventListener("DOMContentLoaded", search);
+document.addEventListener("turbo:load", search);
