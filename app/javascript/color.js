@@ -59,3 +59,4 @@ function color() {
 // Turboと通常のDOMの読み込みイベントの両方でcolor関数を実行
 document.addEventListener("DOMContentLoaded", color);
 document.addEventListener("turbo:load", color);
+document.addEventListener("turbo:frame-render", color); 
