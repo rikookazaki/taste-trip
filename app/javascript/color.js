@@ -54,21 +54,3 @@ function color() {
 // Turboと通常のDOMの読み込みイベントの両方でcolor関数を実行
 document.addEventListener("DOMContentLoaded", color);
 document.addEventListener("turbo:load", color);
-
-
-
-function transform() {
-  const mainElements = document.querySelectorAll(".main");
-  mainElements.forEach(element => {
-    // 一旦 'fade-in' クラスを削除してリセット
-    element.classList.remove("fade-in");
-    
-    // 少し遅延を入れて再度 'fade-in' クラスを追加し、アニメーションを確実に発動
-    setTimeout(() => {
-      element.classList.add("fade-in");
-    }, 10);  // 10ミリ秒の遅延
-  });
-}
-
-document.addEventListener("DOMContentLoaded", transform);
-document.addEventListener("turbo:load", transform);
