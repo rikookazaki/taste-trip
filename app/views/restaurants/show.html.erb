@@ -21,8 +21,8 @@
       <% end %>
     </div>
 
-    <div id="favorite_<%= restaurant.id %>">
-      <%= render "favorites/favorite", restaurant: restaurant %>
+    <div id="favorite_<%= @restaurant.id %>">
+      <%= render "favorites/favorite", restaurant: @restaurant %>
     </div>
 
     <div class="description">
