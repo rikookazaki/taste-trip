@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "favorite_#{restaurant.id}" do %>
+  <% if user_signed_in? && current_user&.user? && restaurant.approved? %>
+    <% if restaurant.favorited_by?(current_user) %>
+      <%= button_to 'お気に入りから削除', restaurant_favorite_path(restaurant), method: :delete, data: { turbo_method: :delete }, class: 'favorite-btn' %>
+    <% else %>
+      <%= button_to 'お気に入り追加', restaurant_favorite_path(restaurant), method: :post, data: { turbo_method: :post }, class: 'favorite-btn' %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,16 +1,30 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_restaurant
 
   def create
-    @restaurant = Restaurant.find(params[:restaurant_id])
     current_user.favorites.create(restaurant: @restaurant)
-    redirect_to restaurant_path(@restaurant)
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to @restaurant }
+    end
+
   end
 
   def destroy
-    @favorite = current_user.favorites.find_by(restaurant_id: params[:restaurant_id])
-    @favorite.destroy if @favorite
-    redirect_to restaurant_path(params[:restaurant_id])
+    favorite = Favorite.find_by(restaurant: @restaurant, user: current_user)
+    favorite.destroy 
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to @restaurant }
+    end
+  end
+
+
+  private
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
 end

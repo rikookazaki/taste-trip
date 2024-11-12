@@ -36,5 +36,9 @@ class Restaurant < ApplicationRecord
     status == 'pending'
   end
 
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
+
   validates :name, :address, :phone_num, :country_ids, presence: true
 end
