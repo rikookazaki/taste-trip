@@ -55,6 +55,28 @@ class GooglePlacesService
     @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'Greek', language: 'ja')
   end
 
+  def fetch_turkish_restaurants
+    # 渋谷駅の緯度・経度を指定し、半径10km以内のトルコ料理屋を取得
+    @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'Turkish', language: 'ja')
+  end
+
+  def fetch_brazilian_restaurants
+    # 渋谷駅の緯度・経度を指定し、半径10km以内のブラジル料理屋を取得
+    @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'Brazilian', language: 'ja')
+  end
+
+  def fetch_american_restaurants
+    # 渋谷駅の緯度・経度を指定し、半径10km以内のアメリカ料理屋を取得
+    @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'American', language: 'ja')
+  end
+
+  def fetch_russian_restaurants
+    # 渋谷駅の緯度・経度を指定し、半径10km以内のロシア料理屋を取得
+    @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'Russian', language: 'ja')
+  end
+
+  
+
   def fetch_place_details(place_id)
     @client.spot(place_id)
   end
