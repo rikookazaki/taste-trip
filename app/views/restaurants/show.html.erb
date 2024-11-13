@@ -77,7 +77,7 @@
           <span class="features"><%= situation.name %></span>
         <% end %>
       </div><br>
-    </div><br><br><br>
+    </div><br><br>
   
     <% if user_signed_in?  && @restaurant.approved? %>
       <%= link_to "編集する", edit_restaurant_path(@restaurant.id), class:"link_to_root"%>
