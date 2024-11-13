@@ -75,7 +75,35 @@ class GooglePlacesService
     @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'Russian', language: 'ja')
   end
 
-  
+  def fetch_lebanese_restaurants
+    # 渋谷駅の緯度・経度を指定し、半径10km以内のレバノン料理屋を取得
+    @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'Lebanese', language: 'ja')
+  end
+
+  def fetch_moroccan_restaurants
+    # 渋谷駅の緯度・経度を指定し、半径10km以内のモロッコ料理屋を取得
+    @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'Moroccan', language: 'ja')
+  end
+
+  def fetch_african_restaurants
+    # 渋谷駅の緯度・経度を指定し、半径10km以内のアフリカ料理屋を取得
+    @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'African', language: 'ja')
+  end
+
+  def fetch_persian_restaurants
+    # 渋谷駅の緯度・経度を指定し、半径10km以内のペルシャ料理屋を取得
+    @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'Persian', language: 'ja')
+  end
+
+  def fetch_caribbean_restaurants
+    # 渋谷駅の緯度・経度を指定し、半径10km以内のカリブ料理屋を取得
+    @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'Caribbean', language: 'ja')
+  end
+
+  def fetch_mediterranean_restaurants
+    # 渋谷駅の緯度・経度を指定し、半径10km以内の地中海料理屋を取得
+    @client.spots(35.658034, 139.701636, radius: 10000, types: 'restaurant', keyword: 'Mediterranean', language: 'ja')
+  end
 
   def fetch_place_details(place_id)
     @client.spot(place_id)

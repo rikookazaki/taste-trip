@@ -85,7 +85,10 @@ def format_phone_number(international_phone_number)
 end
 
 
-save_restaurants(service, 'Turkish', 'トルコ')
-save_restaurants(service, 'Brazilian', 'ブラジル')
-save_restaurants(service, 'American', 'アメリカ')
-save_restaurants(service, 'Russian', 'ロシア')
+
+save_restaurants(service, 'Lebanese', 'レバノン')
+save_restaurants(service, 'Moroccan', 'モロッコ')
+save_restaurants(service, 'African', '南アフリカ共和国')
+save_restaurants(service, 'Persian', 'イラン')
+save_restaurants(service, 'Caribbean', 'キューバ')
+save_restaurants(service, 'Mediterranean', 'クロアチア')
