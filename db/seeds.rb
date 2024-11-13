@@ -72,10 +72,11 @@ def save_restaurants(service, cuisine, country_name)
         name: sanitize_text(place.name),
         place_id: place.place_id,
         address: sanitize_text(formatted_address),
-        phone_num: sanitize_text(formatted_phone_number),
-        website: sanitize_text(place.website),
-        opening_hours: sanitize_text(opening_hours),
-        api_image_urls: image_urls.to_json # JSON形式で保存
+        phone_num: formatted_phone_number,
+        website: place.website,
+        opening_hours: opening_hours,
+        api_image_urls: image_urls.to_json, # JSON形式で保存
+        status: 'approved'
       )
     
       # 国情報との関連付け（中間テーブルを使う場合）
