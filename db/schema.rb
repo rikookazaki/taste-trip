@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_05_092858) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_13_045717) do
   create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -101,6 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_05_092858) do
     t.datetime "updated_at", null: false
     t.text "api_image_urls"
     t.string "status", default: "pending", null: false
+    t.string "place_id"
   end
 
   create_table "situations", charset: "utf8mb3", force: :cascade do |t|

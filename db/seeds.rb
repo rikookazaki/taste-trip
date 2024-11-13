@@ -46,6 +46,9 @@ def save_restaurants(service, cuisine, country_name)
   country = Country.find_by(name: country_name)
 
   places.each do |place|
+    # place_idがすでに保存済みだった場合はスキップ
+    next if Restaurant.exists?(place_id: place.place_id)
+
     place_details = service.fetch_place_details(place.place_id)
     
     formatted_address = place_details.formatted_address || '不明'
@@ -67,6 +70,7 @@ def save_restaurants(service, cuisine, country_name)
     if formatted_address.present? && !Restaurant.exists?(name: place.name, address: formatted_address)
       restaurant = Restaurant.new(
         name: sanitize_text(place.name),
+        place_id: place.place_id,
         address: sanitize_text(formatted_address),
         phone_num: sanitize_text(formatted_phone_number),
         website: sanitize_text(place.website),
