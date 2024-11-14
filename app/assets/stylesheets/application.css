@@ -337,8 +337,8 @@ header {
 .features{
   background-color: darkgreen;
   color: white;
-  padding: 5px 10px;
-  border-radius: 15px;
+  padding: 5px 13px;
+  border-radius: 20px;
   font-size: 1.5vw;
   white-space: nowrap;
   margin-bottom: 5px; 
