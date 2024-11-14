@@ -83,7 +83,7 @@
       <%= link_to "編集する", edit_restaurant_path(@restaurant.id), class:"link_to_root"%>
       <%= link_to "削除する", restaurant_path(@restaurant.id), data: { turbo_method: :delete }, class:"link_to_root" %>
     <% end %>
-    <%= link_to "戻る", restaurants_path, class:"link_to_root" %>
+    <%= link_to "戻る", "javascript:history.back();", class:"link_to_root" %>
 
   </div>
 </div>
