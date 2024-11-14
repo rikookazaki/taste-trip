@@ -65,14 +65,14 @@
       </div><br>
 
       <div>
-        ジャンル：
+        ジャンル：<br>
         <% @restaurant.genres.each do |genre| %>
           <span class="features"><%= genre.name %></span>
         <% end %>
       </div><br>
 
       <div>
-        利用シーン：
+        利用シーン：<br>
         <% @restaurant.situations.each do |situation| %>
           <span class="features"><%= situation.name %></span>
         <% end %>

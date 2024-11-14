@@ -337,9 +337,12 @@ header {
 .features{
   background-color: darkgreen;
   color: white;
-  padding: 7px 12px;
+  padding: 5px 10px;
   border-radius: 15px;
   font-size: 1.5vw;
+  white-space: nowrap;
+  margin-bottom: 5px; 
+  display: inline-block;
 }
 
 button.favorite-btn {
