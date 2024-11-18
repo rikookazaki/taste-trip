@@ -1,10 +1,16 @@
 <div class="main">
 
   <div class="restaurant">
-    <div class="restaurant_name"><%= @restaurant.name %>
-      <% if current_user&.admin? && @restaurant.pending? %>
-        <%= link_to '承認', approve_restaurant_path(@restaurant), data: { turbo_method: :patch }, class:"link_to_root" %>
-      <% end %>
+    <div class="restaurant_name_top">
+      <div class="restaurant_name">
+        <%= @restaurant.name %>
+        <% if current_user&.admin? && @restaurant.pending? %>
+          <%= link_to '承認', approve_restaurant_path(@restaurant), data: { turbo_method: :patch }, class:"link_to_root" %>
+        <% end %>
+      </div>
+      <div id="favorite_<%= @restaurant.id %>">
+        <%= render "favorites/favorite", restaurant: @restaurant %>
+      </div>
     </div><br><br>
 
     <div class="image-gallery">
@@ -19,10 +25,6 @@
           <%= image_tag url, class: "gallery-image" %>
         <% end %>
       <% end %>
-    </div>
-
-    <div id="favorite_<%= @restaurant.id %>">
-      <%= render "favorites/favorite", restaurant: @restaurant %>
     </div>
 
     <div class="description">
