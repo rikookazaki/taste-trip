@@ -88,6 +88,9 @@
         <%= review.user.nickname %>:
         <%= review.content %>
       </div>
+      <% if user_signed_in? && (review.user == current_user) %>
+        <%= link_to "削除", restaurant_review_path(@restaurant, review), data: { turbo_method: :delete } %>
+      <% end %>
     <% end %>
 
     <% if user_signed_in? %>
