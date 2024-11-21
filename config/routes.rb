@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get :introduce
     end
     resource :favorite, only: [:create, :destroy]
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create, :destroy]
   end
   resources :users, only: :show
 end
