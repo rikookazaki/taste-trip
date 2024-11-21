@@ -54,6 +54,8 @@ class RestaurantsController < ApplicationController
 
 
   def show
+    @reviews = @restaurant.reviews.includes(:user)
+    @review = Review.new 
   end
 
 

@@ -83,7 +83,7 @@
 
 
     <h2>レビュー一覧</h2>
-    <% @restaurant.reviews.each do |review| %>
+    <% @reviews.each do |review| %>
       <div>
         <strong><%= review.user.nickname %>:</strong>
         <p><%= review.content %></p>
@@ -92,7 +92,7 @@
 
     <% if user_signed_in? %>
       <h2>レビューを投稿</h2>
-      <%= form_with model: [@restaurant, Review.new], local: true do |f| %>
+      <%= form_with model: [@restaurant, @review], local: true do |f| %>
         <div>
           <%= f.label :content, "レビュー内容" %>
           <%= f.text_area :content %>
