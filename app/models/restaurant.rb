@@ -15,6 +15,8 @@ class Restaurant < ApplicationRecord
   has_many :favorites
   has_many :users, through: :favorites
 
+  has_many :reviews, dependent: :destroy
+
   def self.ransackable_attributes(auth_object = nil)
     ["access", "address", "created_at", "description", "id", "name", "opening_hours", "payment", "phone_num", "updated_at", "website"]
   end
