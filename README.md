@@ -47,7 +47,7 @@ Taste Trip
 * レビュー機能
 * 画像のスライダー機能
 # データベース設計
-<img src=https://i.gyazo.com/4b9a57f07b292d000b5f6dfd8328b728.png width=800px>
+<img src=https://i.gyazo.com/aba062beefb1cbd4daf08e8b009a34a8.png width=800px>
 
 # 画面遷移図
 <img src=https://i.gyazo.com/5acbaf9db295067f0c0764281745637d.png height=400px>

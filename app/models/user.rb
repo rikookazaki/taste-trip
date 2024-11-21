@@ -9,5 +9,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :restaurants, through: :favorites
 
+  has_many :reviews, dependent: :destroy
+
   validates :nickname, presence: true
 end
