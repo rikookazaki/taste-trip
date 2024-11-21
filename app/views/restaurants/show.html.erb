@@ -82,28 +82,26 @@
     </div><br><br><br>
 
 
-    <h2>レビュー一覧</h2>
+    <h4>コメント</h4>
     <% @reviews.each do |review| %>
       <div>
-        <strong><%= review.user.nickname %>:</strong>
-        <p><%= review.content %></p>
+        <%= review.user.nickname %>:
+        <%= review.content %>
       </div>
     <% end %>
 
     <% if user_signed_in? %>
-      <h2>レビューを投稿</h2>
+      <h4>コメントを投稿</h4>
       <%= form_with model: [@restaurant, @review], local: true do |f| %>
         <div>
           <%= f.label :content, "レビュー内容" %>
           <%= f.text_area :content %>
-        </div>
-        <div>
           <%= f.submit "投稿する" %>
         </div>
       <% end %>
     <% else %>
       <p>レビューを投稿するにはログインが必要です。</p>
-    <% end %>
+    <% end %><br><br>
   
     <% if user_signed_in?  && @restaurant.approved? %>
       <%= link_to "編集する", edit_restaurant_path(@restaurant.id), class:"link_to_root"%>
