@@ -362,6 +362,8 @@ button.favorite-btn {
   width: 90%;
   margin: 0 auto;
   color: dimgray;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
 }
 
 .comment{
@@ -391,9 +393,15 @@ button.favorite-btn {
   font-size: 10px;
 }
 
+.comment_message{
+  text-align: center;
+  color: dimgray;
+  margin-top: 10px;
+}
+
 .comment_form{
   width: 90%;
-  margin: 60px auto 10px;
+  margin: 40px auto 10px;
   padding: 10px; 
   display: flex;
   align-items: center;

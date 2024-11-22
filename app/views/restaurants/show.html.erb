@@ -83,16 +83,20 @@
 
 
     <div class="comment_top">みんなの声</div>
-    <% @reviews.each do |review| %>
-      <div class="comment">
-        <div class="comment_content"><%= review.content %></div>
-        <div class="comment_user">投稿者：<%= review.user.nickname %></div>
-        <% if user_signed_in? && (review.user == current_user) %>
-          <div class="delete_comment">
-            <%= link_to "削除", restaurant_review_path(@restaurant, review), data: { turbo_method: :delete }, class:"delete_comment_btn" %>
-          </div>
-        <% end %>
-      </div>
+    <% if @reviews.any? %>
+      <% @reviews.each do |review| %>
+        <div class="comment">
+          <div class="comment_content"><%= review.content %></div>
+          <div class="comment_user">投稿者：<%= review.user.nickname %></div>
+          <% if user_signed_in? && (review.user == current_user) %>
+            <div class="delete_comment">
+              <%= link_to "削除", restaurant_review_path(@restaurant, review), data: { turbo_method: :delete }, class:"delete_comment_btn" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="comment_message">コメントがありません<br>感想や意見を投稿してみましょう</div>
     <% end %>
 
     <% if user_signed_in? %>
@@ -103,7 +107,7 @@
         </div>
       <% end %>
     <% else %>
-      <div class="comment_form">レビューを投稿するにはログインが必要です。</div>
+      <div class="comment_message">レビューを投稿するにはログインが必要です。</div>
     <% end %><br><br>
   
     <% if user_signed_in?  && @restaurant.approved? %>
