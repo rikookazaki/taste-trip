@@ -365,11 +365,12 @@ button.favorite-btn {
 }
 
 .comment{
-  background-color: wheat;
-  color: brown;
-  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px; 
+  color: dimgray;
+  width: 90%;
   margin: 10px auto;
-  padding: 10px 20px;
   border-radius: 10px;
 }
 
@@ -383,10 +384,34 @@ button.favorite-btn {
 
 .delete_comment_btn{
   text-decoration: none;
-  color: brown;
-  background-color: #fff3cd;
+  color: white;
+  background-color: green;
   padding: 5px 10px;
   border-radius: 10px;
+  font-size: 10px;
+}
+
+.comment_form{
+  width: 90%;
+  margin: 60px auto 10px;
+  padding: 10px; 
+}
+
+.comment_form_content{
+  width: 80%;
+  padding: 10px;         /* 内側の余白 */
+  border: 1px solid #ccc; /* 枠線の色 */
+  border-radius: 5px;    /* 角丸 */
+  font-size: 16px; 
+}
+
+.comment_submit_btn{
+  background-color: green; 
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 /* ログイン・サインアップページ */

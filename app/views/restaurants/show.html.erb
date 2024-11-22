@@ -96,12 +96,10 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <div class="comment_top">コメントを投稿</div>
       <%= form_with model: [@restaurant, @review], local: true do |f| %>
-        <div>
-          <%= f.label :content, "レビュー内容" %>
-          <%= f.text_area :content %>
-          <%= f.submit "投稿する" %>
+        <div class="comment_form">
+          <%= f.text_area :content, placeholder:"コメントを投稿", class: "comment_form_content" %>
+          <%= f.submit "投稿する", class: "comment_submit_btn" %>
         </div>
       <% end %>
     <% else %>
