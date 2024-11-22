@@ -398,6 +398,8 @@ button.favorite-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  color: dimgray;
 }
 
 .comment_form_content{
