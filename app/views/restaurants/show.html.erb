@@ -82,28 +82,32 @@
     </div><br><br><br>
 
 
-    <h4>コメント</h4>
-    <% @reviews.each do |review| %>
-      <div>
-        <%= review.user.nickname %>:
-        <%= review.content %>
-      </div>
-      <% if user_signed_in? && (review.user == current_user) %>
-        <%= link_to "削除", restaurant_review_path(@restaurant, review), data: { turbo_method: :delete } %>
-      <% end %>
-    <% end %>
-
-    <% if user_signed_in? %>
-      <h4>コメントを投稿</h4>
-      <%= form_with model: [@restaurant, @review], local: true do |f| %>
-        <div>
-          <%= f.label :content, "レビュー内容" %>
-          <%= f.text_area :content %>
-          <%= f.submit "投稿する" %>
+    <div class="comment_top">みんなの声</div>
+    <% if @reviews.any? %>
+      <% @reviews.each do |review| %>
+        <div class="comment">
+          <div class="comment_content"><%= review.content %></div>
+          <div class="comment_user">投稿者：<%= review.user.nickname %></div>
+          <% if user_signed_in? && (review.user == current_user) %>
+            <div class="delete_comment">
+              <%= link_to "削除", restaurant_review_path(@restaurant, review), data: { turbo_method: :delete }, class:"delete_comment_btn" %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     <% else %>
-      <p>レビューを投稿するにはログインが必要です。</p>
+      <div class="comment_message">コメントがありません<br>感想や意見を投稿してみましょう</div>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <%= form_with model: [@restaurant, @review], local: true do |f| %>
+        <div class="comment_form">
+          <%= f.text_area :content, placeholder:"コメントを投稿", class: "comment_form_content" %>
+          <%= f.submit "投稿する", class: "comment_submit_btn" %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="comment_message">レビューを投稿するにはログインが必要です。</div>
     <% end %><br><br>
   
     <% if user_signed_in?  && @restaurant.approved? %>
