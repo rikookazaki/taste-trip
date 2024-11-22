@@ -82,19 +82,21 @@
     </div><br><br><br>
 
 
-    <h4>コメント</h4>
+    <div class="comment_top">みんなの声</div>
     <% @reviews.each do |review| %>
-      <div>
-        <%= review.user.nickname %>:
-        <%= review.content %>
+      <div class="comment">
+        <div class="comment_content"><%= review.content %></div>
+        <div class="comment_user">投稿者：<%= review.user.nickname %></div>
+        <% if user_signed_in? && (review.user == current_user) %>
+          <div class="delete_comment">
+            <%= link_to "削除", restaurant_review_path(@restaurant, review), data: { turbo_method: :delete }, class:"delete_comment_btn" %>
+          </div>
+        <% end %>
       </div>
-      <% if user_signed_in? && (review.user == current_user) %>
-        <%= link_to "削除", restaurant_review_path(@restaurant, review), data: { turbo_method: :delete } %>
-      <% end %>
     <% end %>
 
     <% if user_signed_in? %>
-      <h4>コメントを投稿</h4>
+      <div class="comment_top">コメントを投稿</div>
       <%= form_with model: [@restaurant, @review], local: true do |f| %>
         <div>
           <%= f.label :content, "レビュー内容" %>

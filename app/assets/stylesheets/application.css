@@ -356,6 +356,38 @@ button.favorite-btn {
   border-radius: 15px;
 }
 
+.comment_top{
+  font-weight: bold;
+  font-size: 20px;
+  width: 90%;
+  margin: 0 auto;
+  color: dimgray;
+}
+
+.comment{
+  background-color: wheat;
+  color: brown;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.comment_user{
+  text-align: right;
+}
+
+.delete_comment{
+  text-align: right;
+}
+
+.delete_comment_btn{
+  text-decoration: none;
+  color: brown;
+  background-color: #fff3cd;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
 
 /* ログイン・サインアップページ */
 
