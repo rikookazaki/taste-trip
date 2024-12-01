@@ -108,7 +108,7 @@
       <% end %>
     <% else %>
       <div class="comment_message">レビューを投稿するにはログインが必要です。</div>
-    <% end %><br><br>
+    <% end %><br>
   
     <% if user_signed_in?  && @restaurant.approved? %>
       <%= link_to "編集する", edit_restaurant_path(@restaurant.id), class:"link_to_root"%>
